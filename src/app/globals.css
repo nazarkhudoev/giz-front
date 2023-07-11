@@ -2,26 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+a {
+  text-decoration: none !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+ul,
+ol,
+li,
+button,
+p {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.switch-btn button {
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.switch-txt {
+  color: red !important;
+}
+
+.slider__main-1 {
+  background-image: url(../../public/images/image\ 2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.slider__main-2 {
+  background-image: url(../../public/images/image\ 1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.slider__main-3 {
+  background-image: url(../../public/images/image\ 3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15% !important;
+  bottom: 1.25rem !important;
+  left: 0% !important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+  padding-left: 1rem !important;
+  color: #fff !important;
+  text-align: left !important;
+  width: 530px !important;
+
+  border-radius: 0px 20px 20px 0px !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8.5px) !important;
+  color: #000 !important;
+}
+
+.carousel-indicators {
+  margin-top: 150px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+}
+
+.carousel-indicators button {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100% !important;
+}
+
+.carousel-control-prev {
+  left: -60px !important;
+}
+
+.carousel-control-next {
+  right: -60px !important;
+}
+
+/* Projects */
+.project-subtitle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }

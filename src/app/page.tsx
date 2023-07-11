@@ -1,9 +1,13 @@
-import Image from 'next/image'
+import Filter from "@/components/Filter/Filter"
+import MainContent from "@/components/MainContent/MainContent"
+import MainSlider from "@/components/MainSlider/MainSlider"
 
 export default function Home() {
   return (
     <main>
-      <h1>HEllo world!</h1>
+      <MainSlider />
+      <Filter />
+      <MainContent />
     </main>
   )
 }
