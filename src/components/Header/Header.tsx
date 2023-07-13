@@ -1,4 +1,6 @@
+"use client"
 import LanguageSwitch from "../LanguageSwitch/LanguageSwitch";
+import CustomSwitch from "../CustomSwitch/CustomSwitch";
 import Logo from "../Logo/Logo";
 import Navbar from "../Navbar/Navbar";
 
@@ -8,7 +10,8 @@ export default function Header() {
       <Logo />
       <div className="flex items-center gap-14">
         <Navbar />
-        <LanguageSwitch />
+        {/* <LanguageSwitch /> */}
+        <CustomSwitch />
       </div>
     </header>
   );

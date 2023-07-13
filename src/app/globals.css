@@ -25,6 +25,48 @@ p {
   color: red !important;
 }
 
+/* switch */
+.css-13cymwt-control {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  /* border-color: #fff !important; */
+  width: 60px !important;
+}
+
+/* placeholder */
+.css-1dimb5e-singleValue,
+.css-1fdsijx-ValueContainer {
+  color: #fff !important;
+}
+
+.css-1jqq78o-placeholder {
+  color: #fff !important;
+}
+
+/* click class */
+.css-t3ipsp-control {
+  background: transparent !important;
+  outline: none !important;
+  border: none !important;
+  /* border-color: #fff !important; */
+  color: #000 !important;
+}
+
+.css-t3ipsp-control:active,
+.css-t3ipsp-control:focus,
+.css-13cymwt-control:active,
+.css-13cymwt-control:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+/* switch arrow */
+.css-1hb7zxy-IndicatorsContainer {
+  outline: none !important;
+  display: none !important;
+}
+
 .slider__main-1 {
   background-image: url(../../public/images/image\ 2.png);
   background-repeat: no-repeat;

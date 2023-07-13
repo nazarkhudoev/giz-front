@@ -18,7 +18,7 @@ import GermanFlag from "../../../public/icons/de.svg";
 
 export default function LanguageSwitch() {
   const [lang, setlang] = useState("EN");
-  const [active, setActive] = useState("")
+  const [active, setActive] = useState("");
 
   return (
     <div className="switch-btn">

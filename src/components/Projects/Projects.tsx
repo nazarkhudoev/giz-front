@@ -1,9 +1,16 @@
 import { data } from "@/app/data/projects";
 import Image from "next/image";
 
+// import {
+//   Accordion,
+//   AccordionContent,
+//   AccordionItem,
+//   AccordionTrigger,
+// } from "@/components/ui/accordion"
+
 export default function Projects() {
   return (
-    <div className="bg-[#F0F0F0] rounded-[30px] w-[450px] p-3">
+    <div className="bg-[#F0F0F0] rounded-[30px] w-[450px] h-[520px] overflow-y-scroll p-3">
       <h3 className="text-center my-4">Projects</h3>
       <section className="flex flex-col items-start justify-start gap-5">
         {data.map((project: any) => {
