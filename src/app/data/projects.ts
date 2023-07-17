@@ -12,6 +12,7 @@ export const data = [
     subtitle:
       "Mountain Food Products, LLC (MFP), a Tajik company incorporated in July of 2013, is a for – profit social enterprise, with a mission to benefit local economies, alleviate poverty and create sustainable loca employment.The LLC MFP has been granted subsidy for renting one hectare of land to cultivate raw potato for processing.",
     image: Project1,
+    district: "Rushon",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const data = [
     subtitle:
       "Mountain Food Products, LLC (MFP), a Tajik company incorporated in July of 2013, is a for – profit social enterprise, with a mission to benefit local economies, alleviate poverty and create sustainable loca employment.The LLC MFP has been granted subsidy for renting one hectare of land to cultivate raw potato for processing. The idea behind the project was to encourage farmers to invest in potato farming to enhance rural development and thus improving their living standards.The main outcomes of the projec are the following: ▪ Creation of additional four job places. ▪ Around twenty-five people benefited from the project indirectly as suppliers, service providers",
     image: Project2,
+    district: "Rushon",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ export const data = [
     subtitle:
       "Mountain Food Products, LLC (MFP), a Tajik company incorporated in July of 2013, is a for – profit social enterprise, with a mission to benefit local economies, alleviate poverty and create sustainable loca employment.The LLC MFP has been granted subsidy for renting one hectare of land to cultivate raw potato for processing. The idea behind the project was to encourage farmers to invest in potato farming to enhance rural development and thus improving their living standards.The main outcomes of the projec are the following: ▪ Creation of additional four job places. ▪ Around twenty-five people benefited from the project indirectly as suppliers, service providers",
     image: Project3,
+    district: "Vakhon",
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ export const data = [
     subtitle:
       "Mountain Food Products, LLC (MFP), a Tajik company incorporated in July of 2013, is a for – profit social enterprise, with a mission to benefit local economies, alleviate poverty and create sustainable loca employment.The LLC MFP has been granted subsidy for renting one hectare of land to cultivate raw potato for processing. The idea behind the project was to encourage farmers to invest in potato farming to enhance rural development and thus improving their living standards.The main outcomes of the projec are the following: ▪ Creation of additional four job places. ▪ Around twenty-five people benefited from the project indirectly as suppliers, service providers",
     image: Project4,
+    district: "Darvoz",
   },
   {
     id: 5,
@@ -44,5 +48,6 @@ export const data = [
     subtitle:
       "Mountain Food Products, LLC (MFP), a Tajik company incorporated in July of 2013, is a for – profit social enterprise, with a mission to benefit local economies, alleviate poverty and create sustainable loca employment.The LLC MFP has been granted subsidy for renting one hectare of land to cultivate raw potato for processing. The idea behind the project was to encourage farmers to invest in potato farming to enhance rural development and thus improving their living standards.The main outcomes of the projec are the following: ▪ Creation of additional four job places. ▪ Around twenty-five people benefited from the project indirectly as suppliers, service providers",
     image: Project5,
+    district: "Vanj",
   },
 ];

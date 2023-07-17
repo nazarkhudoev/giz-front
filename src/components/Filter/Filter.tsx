@@ -17,24 +17,34 @@ export default function Filter() {
       <section className="flex items-center gap-10">
         <div className="py-5">
           <Select>
-            <SelectTrigger className="min-w-[80px] text-black">
-              <SelectValue className="text-black" placeholder={"Region"} />
+            <SelectTrigger className="min-w-[120px] text-black">
+              <SelectValue className="text-black" placeholder={"Districs"} />
             </SelectTrigger>
             <SelectContent className="bg-white">
               <SelectGroup className="text-black">
-                <SelectItem value="RU">
+                <SelectItem value="All">
                   <div className="text-black">
-                    <p>TJ</p>
+                    <p>All</p>
                   </div>
                 </SelectItem>
-                <SelectItem value="EN">
+                <SelectItem value="Rushon">
                   <div className="text-black">
-                    <p className="w-10">EN</p>
+                    <p>Rushon</p>
                   </div>
                 </SelectItem>
-                <SelectItem value="GR">
+                <SelectItem value="Vakhon">
                   <div className="text-black">
-                    <p>DE</p>
+                    <p className="w-10">Vakhon</p>
+                  </div>
+                </SelectItem>
+                <SelectItem value="Darvoz">
+                  <div className="text-black">
+                    <p>Darvoz</p>
+                  </div>
+                </SelectItem>
+                <SelectItem value="Vanj">
+                  <div className="text-black">
+                    <p>Vanj</p>
                   </div>
                 </SelectItem>
               </SelectGroup>
@@ -42,56 +52,7 @@ export default function Filter() {
           </Select>
         </div>
         <div className="py-5">
-          <Select>
-            <SelectTrigger className="min-w-[80px] text-black">
-              <SelectValue className="text-black" placeholder={"City"} />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectGroup className="text-black">
-                <SelectItem value="RU">
-                  <div className="text-black">
-                    <p>TJ</p>
-                  </div>
-                </SelectItem>
-                <SelectItem value="EN">
-                  <div className="text-black">
-                    <p>EN</p>
-                  </div>
-                </SelectItem>
-                <SelectItem value="GR">
-                  <div className="text-black">
-                    <p>DE</p>
-                  </div>
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="py-5">
-          <Select>
-            <SelectTrigger className="min-w-[80px] text-black">
-              <SelectValue className="text-black" placeholder={"Projects"} />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectGroup className="text-black">
-                <SelectItem value="RU">
-                  <div className="text-black">
-                    <p>TJ</p>
-                  </div>
-                </SelectItem>
-                <SelectItem value="EN">
-                  <div className="text-black">
-                    <p>EN</p>
-                  </div>
-                </SelectItem>
-                <SelectItem value="GR">
-                  <div className="text-black">
-                    <p>DE</p>
-                  </div>
-                </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <input className="border h-[40px] px-2" type="text" placeholder="Search..." />
         </div>
       </section>
     </nav>
