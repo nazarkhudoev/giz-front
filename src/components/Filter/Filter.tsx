@@ -11,9 +11,8 @@ import {
 } from "@/components/UI/ui/select";
 
 // region, village, projects
-import { selectFilter } from "@/redux/features/projectsSlice";
+import { selectFilter, seacrhFilter } from "@/redux/features/projectsSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { EventHandler, FormEvent, FormEventHandler } from "react";
 
 export default function Filter() {
   const dispatch = useAppDispatch();
@@ -23,7 +22,7 @@ export default function Filter() {
   }
 
   const handleSearchFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
+    dispatch(seacrhFilter(event.target.value))
   }
 
   return (

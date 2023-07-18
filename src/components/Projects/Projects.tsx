@@ -23,19 +23,21 @@ interface DataInterface {
 export default function Projects() {
   const data = useAppSelector((state) => state.ProjectsReducer.data);
   const filteredData = useAppSelector((state) => state.ProjectsReducer.filteredData);
+  const searchData = useAppSelector((state) => state.ProjectsReducer.searchFilter);
+  const inputValue = useAppSelector((state) => state.ProjectsReducer.inputValue);
+
   const [active, setActive] = useState<number | null>(null);
 
   const [projects, setProjects] = useState<DataInterface[]>(filteredData);
 
   useEffect(() => {
-    if (filteredData.length < 1) {
+    if (filteredData.length < 1 || inputValue.length == 0) {
       setProjects(data)
     } else {
       setProjects(filteredData)
     }
 
-    console.log("filteredData", filteredData);
-  }, [projects, filteredData])
+  }, [projects, filteredData, searchData])
 
   const handleAccordion = (index: number) => {
     setActive(index)
