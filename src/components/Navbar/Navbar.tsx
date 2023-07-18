@@ -6,27 +6,17 @@ export default function Navbar() {
       <ul className="flex items-center gap-10">
         <li>
           <Link className="text-white" href={"/"}>
-            button
+            ABOUT
           </Link>
         </li>
         <li>
           <Link className="text-white" href={"/"}>
-            button
+            PROJECTS
           </Link>
         </li>
         <li>
           <Link className="text-white" href={"/"}>
-            button
-          </Link>
-        </li>
-        <li>
-          <Link className="text-white" href={"/"}>
-            button
-          </Link>
-        </li>
-        <li>
-          <Link className="text-white" href={"/"}>
-            button
+            CONTACT
           </Link>
         </li>
       </ul>

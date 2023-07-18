@@ -31,13 +31,13 @@ export default function Projects() {
   const [projects, setProjects] = useState<DataInterface[]>(filteredData);
 
   useEffect(() => {
-    if (filteredData.length < 1 || inputValue.length == 0) {
+    if (filteredData.length < 1) {
       setProjects(data)
     } else {
       setProjects(filteredData)
     }
 
-  }, [projects, filteredData, searchData])
+  }, [projects, filteredData])
 
   const handleAccordion = (index: number) => {
     setActive(index)
