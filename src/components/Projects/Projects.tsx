@@ -23,7 +23,7 @@ interface DataInterface {
 export default function Projects() {
   const data = useAppSelector((state) => state.ProjectsReducer.data);
   const filteredData = useAppSelector((state) => state.ProjectsReducer.filteredData);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
 
   const [projects, setProjects] = useState<DataInterface[]>(filteredData);
 

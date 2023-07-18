@@ -24,7 +24,7 @@ export const projects = createSlice({
   name: "projetcs",
   initialState,
   reducers: {
-    getData: (state, action: PayloadAction<string>) => {
+    selectFilter: (state, action: PayloadAction<string>) => {
       state.filteredData = state.data.filter(
         (project: DataInterface) => project.district == action.payload
       );
@@ -32,5 +32,5 @@ export const projects = createSlice({
   },
 });
 
-export const { getData } = projects.actions;
+export const { selectFilter } = projects.actions;
 export default projects.reducer;

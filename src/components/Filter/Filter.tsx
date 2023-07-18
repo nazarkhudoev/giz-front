@@ -11,15 +11,19 @@ import {
 } from "@/components/UI/ui/select";
 
 // region, village, projects
-import { getData } from "@/redux/features/projectsSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FormEvent, useState } from "react";
+import { selectFilter } from "@/redux/features/projectsSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { EventHandler, FormEvent, FormEventHandler } from "react";
 
 export default function Filter() {
   const dispatch = useAppDispatch();
 
-  const handleFilter = (value: string) => {
-    dispatch(getData(value));
+  const handleSelectFilter = (value: string) => {
+    dispatch(selectFilter(value));
+  }
+
+  const handleSearchFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
   }
 
   return (
@@ -27,9 +31,9 @@ export default function Filter() {
       <p>Filter:</p>
       <section className="flex items-center gap-10">
         <div className="py-5">
-          <Select onValueChange={handleFilter}>
-            <SelectTrigger className="min-w-[120px] text-black">
-              {/* <SelectValue className="text-black" placeholder={"Districs"} /> */}
+          <Select onValueChange={handleSelectFilter}>
+            <SelectTrigger className="min-w-[120px] text-center text-black">
+              <SelectValue className="text-black" placeholder={"All"} />
               <SelectValue className="text-black" />
             </SelectTrigger>
             <SelectContent className="bg-white">
@@ -46,7 +50,7 @@ export default function Filter() {
                 </SelectItem>
                 <SelectItem value="Vakhon">
                   <div className="text-black">
-                    <p className="w-10">Vakhon</p>
+                    <p>Vakhon</p>
                   </div>
                 </SelectItem>
                 <SelectItem value="Darvoz">
@@ -64,7 +68,7 @@ export default function Filter() {
           </Select>
         </div>
         <div className="py-5">
-          <input className="border h-[40px] px-2" type="text" placeholder="Search..." />
+          <input onChange={(event) => handleSearchFilter(event)} className="border h-[40px] px-2" type="text" placeholder="Search..." />
         </div>
       </section>
     </nav >
