@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Select,
   SelectContent,
@@ -9,16 +11,26 @@ import {
 } from "@/components/UI/ui/select";
 
 // region, village, projects
+import { getData } from "@/redux/features/projectsSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { FormEvent, useState } from "react";
 
 export default function Filter() {
+  const dispatch = useAppDispatch();
+
+  const handleFilter = (value: string) => {
+    dispatch(getData(value));
+  }
+
   return (
     <nav className="flex items-center gap-16 px-28 mt-10">
       <p>Filter:</p>
       <section className="flex items-center gap-10">
         <div className="py-5">
-          <Select>
+          <Select onValueChange={handleFilter}>
             <SelectTrigger className="min-w-[120px] text-black">
-              <SelectValue className="text-black" placeholder={"Districs"} />
+              {/* <SelectValue className="text-black" placeholder={"Districs"} /> */}
+              <SelectValue className="text-black" />
             </SelectTrigger>
             <SelectContent className="bg-white">
               <SelectGroup className="text-black">
@@ -55,6 +67,6 @@ export default function Filter() {
           <input className="border h-[40px] px-2" type="text" placeholder="Search..." />
         </div>
       </section>
-    </nav>
+    </nav >
   );
 }

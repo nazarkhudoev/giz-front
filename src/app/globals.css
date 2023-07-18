@@ -168,7 +168,7 @@ p {
 
 .card__image {
   position: absolute;
-  width: 100px;
+  width: 30%;
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
@@ -178,7 +178,7 @@ p {
 
 .card__info {
   position: absolute;
-  width: 300px;
+  width: 70%;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
@@ -202,8 +202,7 @@ p {
   /* transition-delay: 0.8s; */
 }
 
-/* acite  */
-
+/* acitive  */
 .collapsed__card {
   min-height: 450px;
 }

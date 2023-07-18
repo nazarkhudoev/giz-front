@@ -1,10 +1,19 @@
+import { StaticImageData } from "next/image";
 import Project1 from "../../../public/images/image 4.png";
 import Project2 from "../../../public/images/image 5.png";
 import Project3 from "../../../public/images/image 6.png";
 import Project4 from "../../../public/images/image 7.png";
 import Project5 from "../../../public/images/image 8.png";
 
-export const data = [
+interface DataInterface {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: StaticImageData;
+  district: string;
+}
+
+export const data: DataInterface[] = [
   {
     id: 1,
     title:

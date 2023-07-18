@@ -1,8 +1,9 @@
 "use client"
 
-import { data } from "@/app/data/projects";
-import Image from "next/image";
-import { useState } from "react";
+import { useAppSelector } from "@/redux/hooks";
+// import { data } from "@/app/data/projects";
+import Image, { StaticImageData } from "next/image";
+import { useEffect, useState } from "react";
 
 // import {
 //   Accordion,
@@ -11,19 +12,40 @@ import { useState } from "react";
 //   AccordionTrigger,
 // } from "@/components/ui/accordion"
 
+interface DataInterface {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: StaticImageData;
+  district: string;
+}
+
 export default function Projects() {
+  const data = useAppSelector((state) => state.ProjectsReducer.data);
+  const filteredData = useAppSelector((state) => state.ProjectsReducer.filteredData);
   const [active, setActive] = useState(0);
+
+  const [projects, setProjects] = useState<DataInterface[]>(filteredData);
+
+  useEffect(() => {
+    if (filteredData.length < 1) {
+      setProjects(data)
+    } else {
+      setProjects(filteredData)
+    }
+
+    console.log("filteredData", filteredData);
+  }, [projects, filteredData])
 
   const handleAccordion = (index: number) => {
     setActive(index)
-
   }
 
   return (
     <div className="bg-[#F0F0F0] rounded-[30px] w-[550px] h-[620px] overflow-y-scroll relative px-3 projects__container">
       <h3 className="text-center py-2 sticky top-0 z-50 bg-[#F0F0F0]">Projects</h3>
       <section className="flex flex-col items-start justify-start gap-3">
-        {data.map((project: any, index: number) => {
+        {projects.map((project: any, index: number) => {
           return (
             <div
               key={project.id}
