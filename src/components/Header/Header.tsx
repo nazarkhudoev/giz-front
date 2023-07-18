@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between px-28 py-10 bg-[#C30F08]">
       <Logo />
-      <div className="flex items-center gap-14">
+      <div className="flex items-center gap-[90px]">
         <Navbar />
         {/* <LanguageSwitch /> */}
         <CustomSwitch />

@@ -3,7 +3,7 @@ import Logo from "../Logo/Logo";
 
 export default function Footer() {
   return (
-    <footer className="flex items-start justify-between px-28 py-10 mt-[100px] bg-[#C30F08]">
+    <footer className="flex items-start justify-between px-28 py-[75px] mt-[100px] bg-[#C30F08]">
       <div>
         <Logo />
         <p className="text-white block mt-4">© 2023 Nomad Trails. All rights reserved.</p>
