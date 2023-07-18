@@ -125,6 +125,21 @@ p {
   right: -60px !important;
 }
 
+/* About Section */
+.geography p {
+  line-height: 35px;
+}
+
+/* .language {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.religion {
+  grid-column: 3/4;
+  grid-row: 2/3;
+} */
+
 /* Projects */
 .project-subtitle {
   display: -webkit-box;
