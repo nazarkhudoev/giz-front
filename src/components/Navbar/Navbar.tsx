@@ -5,19 +5,19 @@ export default function Navbar() {
     <nav>
       <ul className="flex items-center gap-[50px]">
         <li>
-          <Link className="text-white" href={"/"}>
+          <a className="text-white" href="#about">
             ABOUT
-          </Link>
+          </a>
         </li>
         <li>
-          <Link className="text-white" href={"/"}>
+          <a className="text-white" href="#projects">
             PROJECTS
-          </Link>
+          </a>
         </li>
         <li>
-          <Link className="text-white" href={"/"}>
+          <a className="text-white" href="#contact">
             CONTACT
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>

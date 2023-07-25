@@ -31,8 +31,8 @@ export default function Projects() {
   const [projects, setProjects] = useState<DataInterface[]>(filteredData);
 
   useEffect(() => {
-    if (filteredData.length < 1) {
-      setProjects(data)
+    if (filteredData.length < 1 || inputValue == "") {
+      setProjects(data);
     } else {
       setProjects(filteredData)
     }
@@ -40,12 +40,16 @@ export default function Projects() {
   }, [projects, filteredData])
 
   const handleAccordion = (index: number) => {
-    setActive(index)
+    setActive(index);
+
+    if (active == index) {
+      setActive(null);
+    }
   }
 
   return (
     <div className="bg-[#F0F0F0] rounded-[30px] w-[550px] h-[620px] overflow-y-scroll relative px-3 projects__container">
-      <h3 className="text-center py-2 sticky top-0 z-50 bg-[#F0F0F0]">Projects</h3>
+      <h3 className="text-center py-3 sticky top-0 z-50 bg-[#F0F0F0]">Projects</h3>
       <section className="flex flex-col items-start justify-start gap-3">
         {projects.map((project: any, index: number) => {
           return (

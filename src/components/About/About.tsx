@@ -1,6 +1,6 @@
 export default function About() {
 	return (
-		<section className="flex items-start justify-between gap-14 px-28 pt-5">
+		<section id="about" className="flex items-start justify-between gap-14 px-28 pt-5">
 			<div className="geography w-[30%]">
 				<h3>Geography</h3>
 				<p className="text-justify">Tajikistan is a landlocked country in Central Asia. It is bordered by Afghanistan to the south, Uzbekistan to the west, Kyrgyzstan to the north, and China to the east. The country is mostly mountainous, with the Pamir Mountains in the east and the Fann Mountains in the west. The highest point in Tajikistan is Mount Ismoil Somoni, which is 7,495 meters (24,590 feet) tall.</p>

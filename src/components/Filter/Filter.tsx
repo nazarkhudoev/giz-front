@@ -29,7 +29,7 @@ export default function Filter() {
     <nav className="flex items-center gap-16 px-28 mt-10">
       <p>Filter:</p>
       <section className="flex items-center gap-10">
-        <div className="py-5">
+        <div>
           <Select onValueChange={handleSelectFilter}>
             <SelectTrigger className="min-w-[120px] text-center text-black">
               <SelectValue className="text-black" placeholder={"All"} />
@@ -66,7 +66,7 @@ export default function Filter() {
             </SelectContent>
           </Select>
         </div>
-        <div className="py-5">
+        <div>
           <input onChange={(event) => handleSearchFilter(event)} className="border h-[40px] px-2" type="text" placeholder="Search..." />
         </div>
       </section>
