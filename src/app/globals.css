@@ -213,7 +213,7 @@ html {
 
 /* acitive  */
 .collapsed__card {
-  min-height: 450px;
+  min-height: 550px;
 }
 
 .collapsed__image_container {
@@ -240,4 +240,32 @@ html {
 .collapsed__text {
   height: 100px;
   /* transition-delay: 0.1s; */
+}
+
+/* Gallery Container */
+.image-container {
+  border: 3px dashed red;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  border: 3px solid blue;
+  position: relative;
+  left: 400px;
+}
+.slider-container img {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  transform: scale(0.6);
+  filter: grayscale(1);
+}
+.active-image {
+  transform: scale(1.1) !important;
+  filter: grayscale(0) !important;
 }

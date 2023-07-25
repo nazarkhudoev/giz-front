@@ -3,6 +3,7 @@
 import { useAppSelector } from "@/redux/hooks";
 // import { data } from "@/app/data/projects";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 // import {
@@ -50,7 +51,7 @@ export default function Projects() {
   return (
     <div className="bg-[#F0F0F0] rounded-[30px] w-[550px] h-[620px] overflow-y-scroll relative px-3 projects__container">
       <h3 className="text-center py-3 sticky top-0 z-50 bg-[#F0F0F0]">Projects</h3>
-      <section className="flex flex-col items-start justify-start gap-3">
+      <section className="flex flex-col items-start justify-start gap-3 pb-5">
         {projects.map((project: any, index: number) => {
           return (
             <div
@@ -70,7 +71,14 @@ export default function Projects() {
                 <p className={`${active == index ? "default__text collapsed__text" : "default__text"}`}>
                   {project.subtitle}
                 </p>
+
+                <div>
+                </div>
               </div>
+              <Link
+                href={`/${project.id}`}
+                className={`${active == index ? "absolute bottom-5 left-[60px] opacity-1" : "absolute opacity-0"}`}
+              >read more</Link>
             </div>
           )
         })}
