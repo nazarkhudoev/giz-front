@@ -9,6 +9,7 @@ module.exports = {
     "./app/components/UI**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./src/app/**/*.{ts,tsx}",
+    "./src/app/admin/**/*.{ts,tsx}",
   ],
   theme: {
     container: {

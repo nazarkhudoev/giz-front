@@ -9,7 +9,7 @@ interface DataInterface {
   id: number;
   title: string;
   subtitle: string;
-  image: StaticImageData;
+  image: any;
   district: string;
 }
 
@@ -33,8 +33,7 @@ export const data: DataInterface[] = [
   },
   {
     id: 3,
-    title:
-      "alleviate poverty and create sustainable loca providers",
+    title: "alleviate poverty and create sustainable loca providers",
     subtitle: "Mountain Food Products, Ls, service providers",
     image: Project3,
     district: "Vakhon",
