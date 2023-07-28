@@ -4,34 +4,49 @@ import { ColumnDef } from "@tanstack/react-table";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-
 export type DataInterface = {
-  id: number;
+  id: string;
   title: string;
   subtitle: string;
-  image: any;
   district: string;
 };
 
 export const columns: ColumnDef<DataInterface>[] = [
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  // },
+  // {
+  //   accessorKey: "email",
+  //   header: "Email",
+  // },
+  // {
+  //   accessorKey: "amount",
+  //   header: "Amount",
+  // },
   {
-    accessorKey: "project",
+    header: "ID",
+    accessorKey: "id",
+    footer: "ID",
+  },
+  {
     header: "Project name",
+    accessorKey: "title",
+    footer: "TITLE",
   },
   {
-    accessorKey: "date",
-    header: "Implemented",
+    header: "Description",
+    accessorKey: "subtitle",
+    footer: "SUBTITLE",
   },
   {
-    accessorKey: "place",
     header: "District | Town/Village",
+    accessorKey: "district",
+    footer: "DISTRICT",
   },
   {
-    accessorKey: "status",
     header: "Status",
-  },
-  {
-    accessorKey: "action",
-    header: "Action",
+    accessorKey: "status",
+    footer: "DISTRICT",
   },
 ];

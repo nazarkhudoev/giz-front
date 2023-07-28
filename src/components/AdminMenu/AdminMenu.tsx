@@ -1,7 +1,7 @@
 export default function AdminMenu() {
   return (
-    <aside>
-      <h3>Menu</h3>
+    <aside className="pl-24 pt-12">
+      <h3>Projects</h3>
     </aside>
   );
 }
