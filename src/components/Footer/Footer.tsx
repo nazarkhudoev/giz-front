@@ -6,15 +6,21 @@ export default function Footer() {
     <footer className="flex items-start justify-between px-28 py-[75px] bg-[#C30F08]">
       <div>
         <Logo />
-        <p className="text-white block mt-4">© 2023 Nomad Trails. All rights reserved.</p>
+        <p className="text-white block mt-4">
+          © 2023 Nomad Trails. All rights reserved.
+        </p>
       </div>
       <nav>
         <ul className="flex flex-col justify-start items-start gap-3">
           <li>
-            <Link className="text-white text-xl font-bold" href={"/"}>About</Link>
+            <Link className="text-white text-xl font-bold" href={"/"}>
+              About
+            </Link>
           </li>
           <li>
-            <Link className="text-white text-xl font-bold" href={"/"}>Projects</Link>
+            <Link className="text-white text-xl font-bold" href={"/admin"}>
+              Projects
+            </Link>
           </li>
         </ul>
       </nav>

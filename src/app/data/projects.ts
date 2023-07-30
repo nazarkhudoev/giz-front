@@ -13,7 +13,7 @@ interface DataInterface {
   district: string;
 }
 
-export const data: any = [
+export const mock_data: any = [
   {
     id: 1,
     title:

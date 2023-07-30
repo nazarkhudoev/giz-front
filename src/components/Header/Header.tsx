@@ -15,15 +15,20 @@ export default function Header() {
   }, []);
 
   return (
-    <header id="header" className="flex items-center justify-between px-28 py-10 bg-[#C30F08]">
+    <header
+      id="header"
+      className="flex items-center justify-between px-28 py-10 bg-[#C30F08]"
+    >
       <Logo />
       <div className="flex items-center gap-[90px]">
-        {path != "/admin" && (
+        <Navbar />
+        <CustomSwitch />
+        {/* {path != "/admin" && (
           <>
             <Navbar />
             <CustomSwitch />
           </>
-        )}
+        )} */}
         {/* <LanguageSwitch /> */}
       </div>
     </header>

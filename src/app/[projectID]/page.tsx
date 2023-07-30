@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
-import Image, { StaticImageData } from "next/image";
-import { data } from "../data/projects";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { mock_data } from "../data/projects";
 import MainSlider from "@/components/MainSlider/MainSlider";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,26 +16,33 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper";
 
 import slide_image_1 from "../../../public/images/img_1.jpg";
 
-interface ProjectInterface {
-  id: number;
-  title: string;
-  subtitle: string;
-  image: any;
-  district: string;
-}
+import { API_KEY } from "@/app/configs/API_KEY";
+import { Projectinterface } from "@/app/interfaces/ProjectInterface";
+import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
+import { fetchProject } from "@/redux/features/projectsSlice";
 
 export default function SingleProject({
   params,
 }: {
   params: { projectID: string };
 }) {
-  const project = data.find(
-    (doc: any) => doc.id == params.projectID
-  ) as ProjectInterface;
+  const dispatch = useAppDispatch();
+
+  const state = useAppSelector((state) => state.ProjectsReducer);
+  useEffect(() => {
+    dispatch(fetchProject());
+  }, []);
+
+  const project = state.projects.find(
+    (doc: Projectinterface) => doc.project_id == params.projectID
+  );
+  console.log(project);
+
   const images = [];
 
-  for (let i = 0; i < data.length; i++) {
-    const element = data[i];
+  for (let i = 0; i < mock_data.length; i++) {
+    const element = mock_data[i];
     images.push(element);
   }
   return (
@@ -42,9 +50,9 @@ export default function SingleProject({
       <MainSlider />
       <section className="project-container px-28 py-12">
         <h2 className="text-center uppercase font-semibold mb-3 text-lg text-[#C30F08]">
-          {project?.title}
+          {project?.name_en}
         </h2>
-        <p>{project.subtitle}</p>
+        <p>{project?.short_en}</p>
         <div className="flex items-center justify-between">
           <div className="container">
             <Swiper
@@ -60,11 +68,13 @@ export default function SingleProject({
                 modifier: 2.5,
               }}
               pagination={{ el: ".swiper-pagination", clickable: true }}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-                clickable: true,
-              }}
+              navigation={
+                {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                  clickable: true,
+                } as any
+              }
               modules={[EffectCoverflow, Pagination, Navigation]}
               className="swiper_container"
             >
@@ -86,12 +96,14 @@ export default function SingleProject({
               <div className="swiper-pagination flex justify-center items-center gap-2"></div>
               <div className="slider-controler">
                 <div className="swiper-button-prev slider-arrow arr-container">
-                  <div className="w-40 h-40 bg-red-500 rounded-full"></div>
+                  <AiOutlineArrowLeft className="arrows" />
+                  {/* <div className="w-40 h-40 bg-red-500 rounded-full"></div> */}
                   {/* <ion-icon name="arrow-back-outline"></ion-icon> */}
                 </div>
                 <div className="swiper-button-next slider-arrow">
+                  <AiOutlineArrowRight className="arrows" />
                   {/* <ion-icon name="arrow-forward-outline"></ion-icon> */}
-                  <div className="w-40 h-40 bg-red-500 rounded-full"></div>
+                  {/* <div className="w-40 h-40 bg-red-500 rounded-full"></div> */}
                 </div>
               </div>
             </Swiper>

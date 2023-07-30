@@ -1,3 +1,5 @@
+import { ReduxProvider } from "@/redux/provider";
+
 // meta data
 export const metadata = {
   title: "Admin Page",
@@ -9,5 +11,9 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <ReduxProvider>{children}</ReduxProvider>
+    </>
+  );
 }

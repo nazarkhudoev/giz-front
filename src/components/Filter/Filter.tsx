@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Select,
@@ -19,11 +19,11 @@ export default function Filter() {
 
   const handleSelectFilter = (value: string) => {
     dispatch(selectFilter(value));
-  }
+  };
 
   const handleSearchFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(seacrhFilter(event.target.value))
-  }
+    dispatch(seacrhFilter(event.target.value));
+  };
 
   return (
     <nav className="flex items-center gap-16 px-28 mt-10">
@@ -67,9 +67,14 @@ export default function Filter() {
           </Select>
         </div>
         <div>
-          <input onChange={(event) => handleSearchFilter(event)} className="border h-[40px] px-2" type="text" placeholder="Search..." />
+          <input
+            onChange={(event) => handleSearchFilter(event)}
+            className="border h-[40px] px-2"
+            type="text"
+            placeholder="Search..."
+          />
         </div>
       </section>
-    </nav >
+    </nav>
   );
 }

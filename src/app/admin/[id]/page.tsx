@@ -1,11 +1,42 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// import { data } from "@/app/data/projects";
 
-export default function CreateProject() {
-  const [englishName, setEnglishName] = useState<string>("");
+import { API_KEY } from "@/app/configs/API_KEY";
+import { Projectinterface } from "@/app/interfaces/ProjectInterface";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchProject } from "@/redux/features/projectsSlice";
+
+export default function UpdateProject({ params }: { params: { id: string } }) {
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.ProjectsReducer);
+
+  useEffect(() => {
+    dispatch(fetchProject());
+  }, []);
+
+  const [projects, setProjects] = useState<Projectinterface[]>(
+    state.filteredData
+  );
+
+  useEffect(() => {
+    if (state.filteredData.length < 1) {
+      setProjects(state.projects);
+    } else {
+      setProjects(state.filteredData);
+    }
+  }, [projects, state.projects, state.filteredData]);
+
+  const project = state.projects.find(
+    (doc: Projectinterface) => doc.project_id == params.id
+  );
+
+  const [englishName, setEnglishName] = useState<string | undefined>("");
   const [englishCategory, setEnglishCategory] = useState<string>("");
-  const [englishDescription, setEnglishDescription] = useState<string>("");
+  const [englishDescription, setEnglishDescription] = useState<
+    string | undefined
+  >("");
   const [file, setFile] = useState("");
   const [banner, setBanner] = useState<any>("");
 
@@ -14,6 +45,11 @@ export default function CreateProject() {
 
   const [isSaved, setIsSaved] = useState<boolean>(false);
 
+  useEffect(() => {
+    setEnglishName(project?.name_en);
+    setEnglishDescription(project?.short_en);
+  }, [state.projects, project]);
+
   const getBanner = () => {};
   const getFile = () => {};
 
@@ -21,12 +57,25 @@ export default function CreateProject() {
     e.preventDefault();
 
     const newProject = {
-      name_en: englishName,
-      category_en: englishCategory,
-      description_en: englishDescription,
-      file: file,
-      name_tj: tajikName,
-      category_tj: tajikDescription,
+      project_id: "string",
+      name_ru: "string",
+      name_tj: "string",
+      name_en: "string",
+      name_de: "string",
+      short_ru: "string",
+      short_tj: "string",
+      short_en: "string",
+      short_de: "string",
+      category_id: "string",
+      banner_url: "string",
+      district_id: "string",
+      village_id: "string",
+      adress_ru: "string",
+      adress_tj: "string",
+      adress_en: "string",
+      adress_de: "string",
+      created_at: "string",
+      updated_at: "string",
     };
 
     console.log(newProject);
@@ -163,11 +212,6 @@ export default function CreateProject() {
                 onChange={getFile}
                 // onChange={(e) => setFile(e.target.value)}
               />
-              <div className="flex items-center gap-5 mt-5">
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
-              </div>
             </div>
             <div className="flex flex-col items-start justify-start mt-[100px]">
               <label className="text-[24px] font-medium mb-2 uppercase">
@@ -188,19 +232,6 @@ export default function CreateProject() {
                 onChange={getFile}
                 // onChange={(e) => setFile(e.target.value)}
               />
-              <div className="flex items-center gap-10 mt-10">
-                <p>pizdataya.png</p>
-                <div className="flex items-center gap-8">
-                  <p>Title</p>
-                  <div className="flex items-center gap-3">
-                    <input className="w-[300px] h-[40px] p-2" type="text" />
-                    <button className="px-4 h-[40px] bg-[#C30F08] text-white">
-                      Upload
-                    </button>
-                  </div>
-                </div>
-              </div>
-              {/* <p>{file}</p> */}
             </div>
           </>
         )}
