@@ -13,7 +13,7 @@ export default function Footer() {
       <nav>
         <ul className="flex flex-col justify-start items-start gap-3">
           <li>
-            <Link className="text-white text-xl font-bold" href={"/"}>
+            <Link className="text-white text-xl font-bold" href={"/login"}>
               About
             </Link>
           </li>

@@ -135,9 +135,31 @@ html {
   right: -60px !important;
 }
 
+.custom__select-group {
+  height: 200px !important;
+  overflow-y: scroll;
+}
+
+.custom__select button {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* .custom__select button span:first-child {
+  display: none;
+} */
+
 /* About Section */
+.geography {
+  
+}
+
 .geography p {
-  line-height: 35px;
+  line-height: 27px;
+}
+
+.card-container div {
+  width: 500px;
 }
 
 /* Projects */
@@ -468,10 +490,14 @@ html {
 }
 
 .choose-file {
-  display: none;
+  /* display: none;
   opacity: 0;
   user-select: none;
-  pointer-events: none;
+  pointer-events: none; */
+
+  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 /* project title */

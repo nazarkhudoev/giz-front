@@ -16,13 +16,32 @@ import TajikFlag from "../../../public/icons/ru.svg";
 import EnglishFlag from "../../../public/icons/en.svg";
 import GermanFlag from "../../../public/icons/de.svg";
 
+import { useTranslation } from "react-i18next";
+
 export default function LanguageSwitch() {
-  const [lang, setlang] = useState("EN");
+  const [lang, setlang] = useState("en");
   const [active, setActive] = useState("");
+
+  // EN,RU,TJ
+
+  const { t, i18n } = useTranslation();
+
+  // const handleChangeLanguage = (language: string) => {
+  //   // console.log("Hello world!");
+  //   i18n.changeLanguage(language);
+  // };
+
+  // onClick={() => handleChangeLanguage("en")
+
+  const changeLanguage = (value: string) => {
+    console.log(value);
+    setlang(value);
+    i18n.changeLanguage(value);
+  };
 
   return (
     <div className="switch-btn">
-      <Select>
+      <Select onValueChange={(e) => changeLanguage(e)}>
         <SelectTrigger className="w-[80px] border-none text-white">
           <SelectValue className="text-white" placeholder={lang} />
         </SelectTrigger>

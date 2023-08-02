@@ -1,11 +1,21 @@
+"use client"
+import { useTranslation } from "react-i18next";
+import dynamic from 'next/dynamic'
+
 export default function About() {
+  const { t, i18n } = useTranslation();
+
+  console.log(
+    t("navbar.doctor")
+  );
+
   return (
     <section
       id="about"
       className="flex items-start justify-between gap-14 px-28 pt-5"
     >
       <div className="geography w-[30%]">
-        <h3>Geography</h3>
+        <h3>{t("navbar.doctor")}</h3>
         <p className="text-justify">
           Tajikistan is a landlocked country in Central Asia. It is bordered by
           Afghanistan to the south, Uzbekistan to the west, Kyrgyzstan to the
@@ -16,8 +26,8 @@ export default function About() {
         </p>
       </div>
       <div className="w-[70%]">
-        <div className="flex items-start gap-10">
-          <div className="mb-5">
+        <div className="card-container flex items-start gap-10">
+          <div className="mb-2">
             <h3>Capital</h3>
             <p className="text-justify">
               The capital of Tajikistan is Dushanbe. Dushanbe is a large city
@@ -26,7 +36,7 @@ export default function About() {
               Mountains.
             </p>
           </div>
-          <div className="mb-5">
+          <div className="mb-2">
             <h3>People</h3>
             <p className="text-justify">
               The majority of the people in Tajikistan are Tajiks. Tajiks are a
@@ -36,7 +46,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="flex items-start gap-10">
+        <div className="card-container flex items-start gap-10">
           <div className="language">
             <h3>Language</h3>
             <p className="text-justify">
