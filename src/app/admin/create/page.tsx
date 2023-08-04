@@ -62,7 +62,7 @@ export default function CreateProject() {
   // const [y, setY] = useState<number>();
   const y = useRef<any>();
 
-  const [isSaved, setIsSaved] = useState<boolean>(true);
+  const [isSaved, setIsSaved] = useState<boolean>(false);
 
   const getDistrict = (value: string) => {
     setDistrict(value);
@@ -150,77 +150,74 @@ export default function CreateProject() {
     console.log(files);
 
 
-    // ? create file reader and array byffer
+    // ? create file reader and array byffer 
     var FileReaderTwo = new FileReader();
-    var Reader = new ArrayBuffer();
+    var Reader: any = new ArrayBuffer()
 
-    FileReaderTwo.onload = function (e) {
-      Reader = e.target.result;
-      console.log(Reader);
+    FileReaderTwo.onload = function (e: any) {
+      Reader = e.target.result
 
-      var chunkes = 100536; // set chunk size
-      var offset = 0; // ofsste will be used slice the element from rawData
-      var baset = "";
-
+      var chunkes = 100536 // set chunk size
+      var offset = 0 // ofsste will be used slice the element from rawData
+      var baset = ""
       // ? for is used to combine all base64 from chunks
       for (let index = 0; index < Reader.byteLength; index++) {
-        var chunk = Reader.slice(offset, chunkes + offset);
-        baset += btoa(String.fromCharCode(...new Uint8Array(chunk)));
-        offset += chunkes;
+        var chunk = Reader.slice(offset, chunkes + offset)
+        baset += btoa(String.fromCharCode(...new Uint8Array(chunk)))
+        offset += chunkes
       }
-      console.log(baset);
+      // ! create json wich will be send with file
 
-      let date = new Date();
-      let day = date.getUTCDate();
-      let month = date.getUTCMonth() + 1;
-      let year = date.getUTCFullYear();
-      let fullDate = `${day}/${month}/${year}`;
-
-      const newProject = JSON.stringify({
-        name_en: "englishName.current.value",
-        name_ru: " russianName.current.value",
-        name_de: "germanName.current.value",
-        name_tj: "tajikName.current.value",
-        short_en: " englishDescription.current.value",
-        short_ru: "russainDescription.current.value",
-        short_de: "germanDescription.current.value",
-        short_tj: " tajikDescription.current.value",
-        adress_en: "englishAddress.current.value",
-        adress_ru: "russianAddress.current.value",
-        adress_de: "germanAddress.current.value",
-        adress_tj: "tajikAddress.current.value",
-        category_id: "category",
-        implementation: "implementation",
-        // location: [parseInt(x.current.value), parseInt(y.current.value)],
-        location: "x.current.value",
-        district_id: "district",
-        village_id: "village",
-        created_at: "fullDate",
-        updated_at: "fullDate",
+      var data = JSON.stringify({
+        "name_ru": "test",
+        "name_tj": "test",
+        "name_en": "test",
+        "name_de": "test",
+        "short_ru": "test",
+        "short_tj": "test",
+        "short_en": "test",
+        "short_de": "test",
+        "category_id": "test",
+        "implementation": "test",
+        "location": "test",
+        "district_id": "test",
+        "village_id": "test",
+        "adress_ru": "test",
+        "adress_tj": "test",
+        "adress_en": "test",
+        "adress_de": "test",
+        "created_at": "test",
+        "updated_at": "test",
       });
       // ? send file and json
-      var data: any = JSON.stringify({
-        byte: baset,
-        data,
-      });
+      var finalData = JSON.stringify({
+        "byte": baset,
+        data
+      })
 
-      // axios.defaults.withCredentials = true;
-      axios
-        .post(`${API_KEY}/create/project`, newProject, { withCredentials: true })
-        // .post(`http://192.168.0.122:5501/giznew-4a7d6/us-central1/expressServe/create/project`, newProject)
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: `${API_KEY}/create/project`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: finalData
+      };
+
+      axios.defaults.withCredentials = true;
+      axios.request(config)
         .then((response) => {
-          console.log(response);
+          console.log(JSON.stringify(response.data));
         })
         .catch((error) => {
           console.log(error);
         });
-
-      console.log(newProject);
-    };
+    }
+    // ?======================================
+    FileReaderTwo.readAsArrayBuffer(files);
 
     setIsSaved(true);
-
-    FileReaderTwo.readAsArrayBuffer(files);
   }
 
   const handleSendMedia = (event: any) => {
