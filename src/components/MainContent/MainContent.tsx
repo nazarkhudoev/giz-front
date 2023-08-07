@@ -1,4 +1,4 @@
-import Map from "../Map/Map";
+import Map from "../Map/index";
 import Projects from "../Projects/Projects";
 
 export default function MainContent() {
@@ -8,7 +8,7 @@ export default function MainContent() {
       className="flex items-start justify-between h-[700px] gap-10 px-28 pt-[50px] pb-[100px]"
     >
       <Projects />
-      <Map />
+      <Map/>
     </div>
   );
 }

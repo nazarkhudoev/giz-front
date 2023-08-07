@@ -26,6 +26,8 @@
     "cookies-next": "^2.1.2",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "leaflet": "^1.9.4",
+    "leaflet-maskcanvas": "^1.0.0",
     "firebase": "^10.1.0",
     "i18next": "^23.4.1",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -40,6 +42,7 @@
     "react-i18next": "^13.0.3",
     "react-icons": "^4.10.1",
     "react-image-gallery": "^1.2.12",
+    "react-leaflet": "^4.2.1",
     "react-redux": "^8.1.1",
     "react-select": "^5.7.3",
     "react-slideshow-image": "^4.2.1",
@@ -53,6 +56,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.3",
     "@types/circular-json": "^0.4.0",
     "@types/react-image-gallery": "^1.2.0",
     "@types/react-swipe": "^6.0.2",
