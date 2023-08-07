@@ -24,6 +24,8 @@
     "clsx": "^1.2.1",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "leaflet": "^1.9.4",
+    "leaflet-maskcanvas": "^1.0.0",
     "lucide-react": "^0.258.0",
     "next": "13.4.7",
     "postcss": "8.4.24",
@@ -32,6 +34,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-image-gallery": "^1.2.12",
+    "react-leaflet": "^4.2.1",
     "react-redux": "^8.1.1",
     "react-select": "^5.7.3",
     "react-slideshow-image": "^4.2.1",
@@ -45,6 +48,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.3",
     "@types/react-image-gallery": "^1.2.0",
     "@types/react-swipe": "^6.0.2",
     "@types/react-table": "^7.7.14"

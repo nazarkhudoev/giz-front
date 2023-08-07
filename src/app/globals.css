@@ -481,3 +481,33 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.leaflet-control-zoom, .leaflet-bar{
+  display: flex;
+  flex-direction: column;
+  width: 40px!important;
+  height: 80px!important;
+  border: none!important;
+  border: none!important;
+
+}
+.leaflet-control-zoom-in{
+
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+  width: 40px!important;
+  height: 40px!important;
+  border-top-left-radius: 10px!important;
+  border-top-right-radius: 10px!important;
+
+}
+.leaflet-control-zoom-out{
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+  width: 40px!important;
+  height: 40px!important;
+  border-bottom-left-radius: 10px!important;
+  border-bottom-right-radius: 10px!important;
+}
