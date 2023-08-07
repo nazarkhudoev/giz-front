@@ -57,6 +57,8 @@ export default function CreateProject() {
   const [media, setMedia] = useState<any>(null);
   const [medias, setMedias] = useState<any>([]);
   const [banner, setBanner] = useState<any>(null);
+  const [projectID, setProjectID] = useState();
+
   // const [x, setX] = useState<number>();
   const x = useRef<any>();
   // const [y, setY] = useState<number>();
@@ -149,10 +151,9 @@ export default function CreateProject() {
     var files = banner;
     console.log(files);
 
-
     // ? create file reader and array byffer 
     var FileReaderTwo = new FileReader();
-    var Reader: any = new ArrayBuffer()
+    var Reader: any = new ArrayBuffer(0);
 
     FileReaderTwo.onload = function (e: any) {
       Reader = e.target.result
@@ -167,28 +168,31 @@ export default function CreateProject() {
         offset += chunkes
       }
       // ! create json wich will be send with file
-
       var data = JSON.stringify({
-        "name_ru": "test",
-        "name_tj": "test",
-        "name_en": "test",
-        "name_de": "test",
-        "short_ru": "test",
-        "short_tj": "test",
-        "short_en": "test",
-        "short_de": "test",
-        "category_id": "test",
-        "implementation": "test",
-        "location": "test",
-        "district_id": "test",
-        "village_id": "test",
-        "adress_ru": "test",
-        "adress_tj": "test",
-        "adress_en": "test",
-        "adress_de": "test",
-        "created_at": "test",
-        "updated_at": "test",
+        "name_ru": russianName,
+        "name_tj": tajikName,
+        "name_en": englishName,
+        "name_de": germanName,
+        "short_ru": russainDescription,
+        "short_tj": tajikDescription,
+        "short_en": englishDescription,
+        "short_de": germanDescription,
+        "category_id": titleRu,
+        "implementation": titleRu,
+        "location": titleRu,
+        "district_id": titleRu,
+        "village_id": titleRu,
+        "adress_ru": titleRu,
+        "adress_tj": titleRu,
+        "adress_en": titleRu,
+        "adress_de": titleRu,
+        "created_at": titleRu,
+        "updated_at": titleRu,
       });
+
+
+      console.log(baset);
+
       // ? send file and json
       var finalData = JSON.stringify({
         "byte": baset,
@@ -209,6 +213,7 @@ export default function CreateProject() {
       axios.request(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
+          setProjectID(response.data.project_id)
         })
         .catch((error) => {
           console.log(error);
@@ -245,15 +250,34 @@ export default function CreateProject() {
     event.preventDefault();
 
     const newLink = {
-      project_id: Date.now(),
-      title_ru: linkTitleRu.current.value,
-      title_en: linkTitleEn.current.value,
-      title_de: linkTitleDe.current.value,
-      title_tj: linkTitleTj.current.value,
-      url: LINK_URL.current.value,
+      "project_id": projectID,
+      "title_ru": linkTitleRu.current.value,
+      "title_en": linkTitleEn.current.value,
+      "title_de": linkTitleDe.current.value,
+      "title_tj": linkTitleTj.current.value,
+      "url": LINK_URL.current.value,
     };
 
-    console.log(newLink);
+    JSON.stringify(newLink)
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${API_KEY}/create/project`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: newLink
+    };
+
+    axios.defaults.withCredentials = true;
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     linkTitleRu.current.value = "";
     linkTitleEn.current.value = "";

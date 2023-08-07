@@ -65,12 +65,26 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
   const category = useRef<any>();
   const [district, setDistrict] = useState<string>("");
   const [village, setVillage] = useState<string>("");
-  const [file, setFile] = useState("");
-  const [banner, setBanner] = useState<any>("");
+  const [file, setFile] = useState<any>(null);
+  const [files, setFiles] = useState<any>([]);
+  const [media, setMedia] = useState<any>(null);
+  const [medias, setMedias] = useState<any>([]);
+  const [banner, setBanner] = useState<any>(null);
   // const [x, setX] = useState<number>();
   const x = useRef<any>();
   // const [y, setY] = useState<number>();
   const y = useRef<any>();
+
+  const titleEn = useRef<any>();
+  const titleRu = useRef<any>();
+  const titleTj = useRef<any>();
+  const titleDe = useRef<any>();
+  const LINK_URL = useRef<any>();
+
+  const linkTitleEn = useRef<any>();
+  const linkTitleRu = useRef<any>();
+  const linkTitleTj = useRef<any>();
+  const linkTitleDe = useRef<any>();
 
   const [isSaved, setIsSaved] = useState<boolean>(false);
 
@@ -90,8 +104,32 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
     // germanAddress.current.value = project?.adress_de;
   }, [state.projects, project]);
 
-  const getBanner = () => {};
-  const getFile = () => {};
+  function getFile(event: any) {
+    console.log(event.target.files[0]);
+    setFile(event.target.files[0]);
+    setFiles((prevFiles: any) => [...prevFiles, event.target.files[0]]);
+    const newFile = {
+      type: event.target.files[0].type,
+      project_id: "",
+      title_ru: "",
+      title_en: "",
+      title_de: "",
+      title_tj: "",
+      url: event.target.files[0].name,
+    };
+    console.log(newFile);
+  }
+
+  const getMedia = (event: any) => {
+    console.log(event.target.files[0]);
+    setMedia(event.target.files[0]);
+    setMedias((prevFiles: any) => [...prevFiles, event.target.files[0]]);
+  };
+
+  const getBanner = (event: any) => {
+    console.log(event.target.files[0]);
+    setBanner(event.target.files[0]);
+  };
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -124,6 +162,81 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
     setIsSaved(true);
   }
 
+  const handleSendMedia = (event: any) => {
+    event.preventDefault();
+
+    const newMedia = {
+      title_ru: titleRu.current.value,
+      title_en: titleEn.current.value,
+      title_de: titleDe.current.value,
+      title_tj: titleTj.current.value,
+    };
+
+    JSON.stringify(newMedia)
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${API_KEY}/update/project/:${project?.project_id}`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: newMedia
+    };
+
+    axios.defaults.withCredentials = true;
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    titleRu.current.value = "";
+    titleEn.current.value = "";
+    titleTj.current.value = "";
+    titleDe.current.value = "";
+  };
+
+  const handleSendLinks = (event: any) => {
+    event.preventDefault();
+
+    const newLink = {
+      "title_ru": linkTitleRu.current.value,
+      "title_en": linkTitleEn.current.value,
+      "title_de": linkTitleDe.current.value,
+      "title_tj": linkTitleTj.current.value,
+      "url": LINK_URL.current.value,
+    };
+
+    JSON.stringify(newLink)
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${API_KEY}/update/project:${project?.project_id}`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: newLink
+    };
+
+    axios.defaults.withCredentials = true;
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    linkTitleRu.current.value = "";
+    linkTitleEn.current.value = "";
+    linkTitleTj.current.value = "";
+    linkTitleDe.current.value = "";
+  };
+
   return (
     <div className="bg-[#D3D3D3] px-24 py-12">
       <div>
@@ -139,8 +252,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Type the project’s name..."
               ref={englishName}
-              // value={englishName}
-              // onChange={(e) => setEnglishName(e.target.value)}
+            // value={englishName}
+            // onChange={(e) => setEnglishName(e.target.value)}
             />
           </div>
           <div className="flex flex-col items-start justify-start">
@@ -150,7 +263,7 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Describe the project..."
               ref={category}
-              // onChange={(e) => setCategory(e.target.value)}
+            // onChange={(e) => setCategory(e.target.value)}
             />
           </div>
         </section>
@@ -161,8 +274,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               className="w-full min-h-[260px] p-3 resize-none"
               placeholder="Describe the project..."
               ref={englishDescription}
-              // value={englishDescription}
-              // onChange={(e) => setEnglishDescription(e.target.value)}
+            // value={englishDescription}
+            // onChange={(e) => setEnglishDescription(e.target.value)}
             ></textarea>
           </div>
         </section>
@@ -187,8 +300,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="X"
               ref={x}
-              // value={x}
-              // onChange={(e) => setX(parseInt(e.target.value))}
+            // value={x}
+            // onChange={(e) => setX(parseInt(e.target.value))}
             />
           </div>
           <div className="flex flex-col items-start justify-start">
@@ -198,7 +311,7 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Y"
               ref={y}
-              // onChange={(e) => setY(parseInt(e.target.value))}
+            // onChange={(e) => setY(parseInt(e.target.value))}
             />
           </div>
         </section>
@@ -219,7 +332,7 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
                 id="file"
                 value={banner}
                 onChange={getBanner}
-                // onChange={(e) => setFile(e.target.value)}
+              // onChange={(e) => setFile(e.target.value)}
               />
               <span>filename.png</span>
             </div>
@@ -236,8 +349,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Type the project’s name..."
               ref={tajikName}
-              // value={tajikName}
-              // onChange={(e) => setTajikName(e.target.value)}
+            // value={tajikName}
+            // onChange={(e) => setTajikName(e.target.value)}
             />
           </div>
         </section>
@@ -248,8 +361,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               className="w-full min-h-[260px] p-3 resize-none"
               placeholder="Describe the project..."
               ref={tajikDescription}
-              // value={tajikDescription}
-              // onChange={(e) => setTajikDescription(e.target.value)}
+            // value={tajikDescription}
+            // onChange={(e) => setTajikDescription(e.target.value)}
             ></textarea>
           </div>
         </section>
@@ -277,8 +390,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Type the project’s name..."
               ref={russianName}
-              // value={russianName}
-              // onChange={(e) => setRussianName(e.target.value)}
+            // value={russianName}
+            // onChange={(e) => setRussianName(e.target.value)}
             />
           </div>
         </section>
@@ -289,8 +402,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               className="w-full min-h-[260px] p-3 resize-none"
               placeholder="Describe the project..."
               ref={russainDescription}
-              // value={russainDescription}
-              // onChange={(e) => setRussainDescription(e.target.value)}
+            // value={russainDescription}
+            // onChange={(e) => setRussainDescription(e.target.value)}
             ></textarea>
           </div>
         </section>
@@ -318,8 +431,8 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               type="text"
               placeholder="Type the project’s name..."
               ref={germanName}
-              // value={germanName}
-              // onChange={(e) => setGermanName(e.target.value)}
+            // value={germanName}
+            // onChange={(e) => setGermanName(e.target.value)}
             />
           </div>
         </section>
@@ -330,7 +443,7 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
               className="w-full min-h-[260px] p-3 resize-none"
               placeholder="Describe the project..."
               ref={germanDescription}
-              // onChange={(e) => setGermanDescription(e.target.value)}
+            // onChange={(e) => setGermanDescription(e.target.value)}
             ></textarea>
           </div>
         </section>
@@ -365,24 +478,37 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
                 Documents (only pDF)
               </label>
               <span className="text-sm text-gray-500 mb-3">max size 2 mb</span>
-              <label
-                htmlFor="file"
-                className="w-[158px] h-[53px] bg-[#C30F08] text-white flex items-center justify-center cursor-pointer rounded-[5px]"
-              >
-                Add
-              </label>
-              <input
-                type="file"
-                className="choose-file"
-                id="file"
-                value={file}
-                onChange={getFile}
+              <div className="flex items-center gap-5">
+                <label
+                  htmlFor="file1"
+                  className="w-[158px] h-[53px] bg-[#C30F08] text-white flex items-center justify-center cursor-pointer rounded-[5px]"
+                >
+                  Add
+                </label>
+                <input
+                  type="file"
+                  className="choose-file"
+                  id="file1"
+                  onChange={getFile}
+                // value={file}
                 // onChange={(e) => setFile(e.target.value)}
-              />
+                />
+                <span>{file != null ? file?.name : "File name"}</span>
+              </div>
               <div className="flex items-center gap-5 mt-5">
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
-                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
+                {files.length > 0 &&
+                  files.map((item: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        className="w-[110px] h-[110px] p-2 flex items-center justify-center text-center text-sm font-medium bg-[#E8A805]"
+                      >
+                        {item?.name}
+                      </div>
+                    );
+                  })}
+                {/* <div className="w-[110px] h-[110px] bg-[#E8A805]"></div>
+                <div className="w-[110px] h-[110px] bg-[#E8A805]"></div> */}
               </div>
             </div>
             <div className="flex flex-col items-start justify-start mt-[100px]">
@@ -390,33 +516,136 @@ export default function UpdateProject({ params }: { params: { id: string } }) {
                 media files (png, jpg)
               </label>
               <span className="text-sm text-gray-500 mb-3">max size 2 mb</span>
-              <label
-                htmlFor="file"
-                className="w-[158px] h-[53px] bg-[#C30F08] text-white flex items-center justify-center cursor-pointer rounded-[5px]"
-              >
-                Choose photo
-              </label>
+              <div className="flex items-center gap-3">
+                <label
+                  htmlFor="file2"
+                  className="w-[158px] h-[53px] bg-[#C30F08] text-white flex items-center justify-center cursor-pointer rounded-[5px]"
+                >
+                  Choose photo
+                </label>
+                <p>{media != null ? media?.name : "File name"}</p>
+              </div>
               <input
                 type="file"
                 className="choose-file"
-                id="file"
-                value={file}
-                onChange={getFile}
-                // onChange={(e) => setFile(e.target.value)}
+                id="file2"
+                onChange={getMedia}
+              // value={file}
+              // onChange={getFile}
+              // onChange={(e) => setFile(e.target.value)}
               />
+              <div className="flex items-center gap-5 mt-5">
+                {medias.length > 0 &&
+                  medias.map((item: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        className="w-[110px] h-[110px] p-2 flex items-center justify-center text-center text-sm font-medium bg-[#E8A805]"
+                      >
+                        {item?.name}
+                      </div>
+                    );
+                  })}
+              </div>
+              {/* Media */}
               <div className="flex items-center gap-10 mt-10">
-                <p>pizdataya.png</p>
-                <div className="flex items-center gap-8">
-                  <p>Title</p>
-                  <div className="flex items-center gap-3">
-                    <input className="w-[300px] h-[40px] p-2" type="text" />
-                    <button className="px-4 h-[40px] bg-[#C30F08] text-white">
+                <div className="flex items-start gap-8">
+                  <section className="flex items-start justify-start flex-col gap-3">
+                    <div className="flex items-center gap-3">
+                      <p className="w-[60px]">Title en</p>
+                      <input
+                        ref={titleEn}
+                        className="w-[300px] h-[40px] p-2"
+                        type="text"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <p className="w-[60px]">Title ru</p>
+                      <input
+                        ref={titleRu}
+                        className="w-[300px] h-[40px] p-2"
+                        type="text"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <p className="w-[60px]">Title tj</p>
+                      <input
+                        ref={titleTj}
+                        className="w-[300px] h-[40px] p-2"
+                        type="text"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <p className="w-[60px]">Title de</p>
+                      <input
+                        ref={titleDe}
+                        className="w-[300px] h-[40px] p-2"
+                        type="text"
+                      />
+                    </div>
+                    <button
+                      onClick={handleSendMedia}
+                      className="px-4 h-[40px] bg-[#C30F08] text-white"
+                    >
                       Upload
                     </button>
-                  </div>
+                  </section>
                 </div>
               </div>
-              {/* <p>{file}</p> */}
+            </div>
+            <div className="flex flex-col items-start justify-start mt-[100px]">
+              <label className="text-[24px] font-medium mb-2 uppercase">
+                Links
+              </label>
+              <span className="text-sm text-gray-500 mb-3">Youtube videos</span>
+              <section className="flex items-start justify-start flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <p className="w-[60px]">URL</p>
+                  <input
+                    ref={LINK_URL}
+                    className="w-[300px] h-[40px] p-2"
+                    type="text"
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <p className="w-[60px]">Title en</p>
+                  <input
+                    ref={linkTitleEn}
+                    className="w-[300px] h-[40px] p-2"
+                    type="text"
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <p className="w-[60px]">Title ru</p>
+                  <input
+                    ref={linkTitleRu}
+                    className="w-[300px] h-[40px] p-2"
+                    type="text"
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <p className="w-[60px]">Title tj</p>
+                  <input
+                    ref={linkTitleTj}
+                    className="w-[300px] h-[40px] p-2"
+                    type="text"
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <p className="w-[60px]">Title de</p>
+                  <input
+                    ref={linkTitleDe}
+                    className="w-[300px] h-[40px] p-2"
+                    type="text"
+                  />
+                </div>
+                <button
+                  onClick={handleSendLinks}
+                  className="px-4 h-[40px] bg-[#C30F08] text-white"
+                >
+                  Upload
+                </button>
+              </section>
             </div>
           </>
         )}
