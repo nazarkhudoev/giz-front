@@ -46,7 +46,10 @@ const initialState = {
 } as initialStateTypes;
 
 export const fetchProject = createAsyncThunk("project/fetchProjects", () => {
-  return axios.get(`${API_KEY}/get/project`).then((response) => response.data);
+  return axios.get(`${API_KEY}/get/project`).then((response) => {
+    console.log(response.data)
+    return response.data
+  });
 });
 
 // let status: string = "";

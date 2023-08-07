@@ -10,6 +10,9 @@ import {
   SelectValue,
 } from "@/components/UI/ui/select";
 
+import { districtsData } from "../../../public/data/District";
+import { regionsData } from "../../../public/data/Region";
+
 // region, village, projects
 import { selectFilter, seacrhFilter } from "@/redux/features/projectsSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -25,6 +28,8 @@ export default function Filter() {
     dispatch(seacrhFilter(event.target.value));
   };
 
+  // properties.District Name
+
   return (
     <nav className="flex items-center gap-16 px-28 mt-10">
       <p>Filter:</p>
@@ -36,8 +41,20 @@ export default function Filter() {
               <SelectValue className="text-black" />
             </SelectTrigger>
             <SelectContent className="bg-white">
-              <SelectGroup className="text-black">
-                <SelectItem value="All">
+              <SelectGroup className="text-black custom__select-group">
+                {districtsData.features.map((district) => {
+                  return (
+                    <SelectItem
+                      key={district.id}
+                      value={district.properties["District Name"]}
+                    >
+                      <div className="text-black">
+                        <p>{district.properties["District Name"]}</p>
+                      </div>
+                    </SelectItem>
+                  );
+                })}
+                {/* <SelectItem value="All">
                   <div className="text-black">
                     <p>All</p>
                   </div>
@@ -61,7 +78,7 @@ export default function Filter() {
                   <div className="text-black">
                     <p>Vanj</p>
                   </div>
-                </SelectItem>
+                </SelectItem> */}
               </SelectGroup>
             </SelectContent>
           </Select>
