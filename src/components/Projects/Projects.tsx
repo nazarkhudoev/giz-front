@@ -11,6 +11,8 @@ import { API_KEY } from "@/app/configs/API_KEY";
 import { Projectinterface } from "@/app/interfaces/ProjectInterface";
 import { fetchProject } from "@/redux/features/projectsSlice";
 
+import "./Projects.css"
+
 export default function Projects() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.ProjectsReducer);
@@ -60,43 +62,38 @@ export default function Projects() {
               <div
                 key={project.project_id}
                 onClick={() => handleAccordion(index, project)}
-                className={`${
-                  active == index ? "card collapsed__card" : "card"
-                }`}
+                className={`${active == index ? "card collapsed__card" : "card"
+                  }`}
               >
                 <div
-                  className={`${
-                    active == index
+                  className={`${active == index
                       ? "collapsed__image_container"
                       : "card__image"
-                  }`}
+                    }`}
                 >
                   <img
-                    className={`${
-                      active == index
+                    className={`${active == index
                         ? "default__image collapsed__image"
                         : "default__image"
-                    }`}
+                      }`}
                     src={project.banner_url}
                     alt="Project Image"
-                    // width={200}
-                    // height={200}
+                  // width={200}
+                  // height={200}
                   />
                 </div>
                 <div
-                  className={`${
-                    active == index
+                  className={`${active == index
                       ? "card__info collapsed__info"
                       : "card__info"
-                  }`}
+                    }`}
                 >
                   <h6 className="text-[15px] font-bold">{project.name_en}</h6>
                   <p
-                    className={`${
-                      active == index
+                    className={`${active == index
                         ? "default__text collapsed__text"
                         : "default__text"
-                    }`}
+                      }`}
                   >
                     {project.short_en}
                   </p>
@@ -105,11 +102,10 @@ export default function Projects() {
                 </div>
                 <Link
                   href={`/${project.project_id}`}
-                  className={`${
-                    active == index
+                  className={`${active == index
                       ? "absolute bottom-5 left-[60px] opacity-1"
                       : "absolute opacity-0"
-                  }`}
+                    }`}
                 >
                   read more
                 </Link>

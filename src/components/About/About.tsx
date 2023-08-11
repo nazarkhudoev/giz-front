@@ -1,3 +1,5 @@
+import "./About.css"
+
 export default function About() {
   return (
     <section
@@ -36,7 +38,7 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div className="card-container flex items-start gap-10">
+        <div className="card-container flex items-start gap-10 mt-2">
           <div className="language">
             <h3>Language</h3>
             <p className="text-justify">

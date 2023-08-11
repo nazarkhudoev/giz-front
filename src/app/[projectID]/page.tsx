@@ -45,10 +45,14 @@ export default function SingleProject({
     const element = mock_data[i];
     images.push(element);
   }
+
   return (
     <div>
-      <MainSlider />
       <section className="project-container px-28 py-12">
+        <div>
+          <Image src={project?.banner_url} alt="Project Placeholder image" width={200} height={200} />
+        </div>
+
         <h2 className="text-center uppercase font-semibold mb-3 text-lg text-[#C30F08]">
           {project?.name_en}
         </h2>
@@ -88,7 +92,7 @@ export default function SingleProject({
                       alt="Gallery Item"
                       width={200}
                       height={200}
-                      // className="object-cover aspect-square"
+                    // className="object-cover aspect-square"
                     />
                   </SwiperSlide>
                 );

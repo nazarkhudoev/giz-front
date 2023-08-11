@@ -7,7 +7,12 @@ import Flag2 from "../../../public/icons/en.svg"
 import Flag3 from "../../../public/icons/en.svg"
 import Flag4 from "../../../public/icons/ru.svg"
 
+import { changeLanguage } from "@/redux/features/languageSlice"
+import { useAppDispatch } from "@/redux/hooks";
+
 export default function CustomSwitch() {
+  const dispatch = useAppDispatch();
+
   const [selectedLanguage, setSelectedLanguage] = useState<any>();
   const [placeholder, setPlaceholder] = useState<any>(selectedLanguage);
 
@@ -23,7 +28,8 @@ export default function CustomSwitch() {
 
   function handleSelectChange(e: any) {
     setSelectedLanguage(e.value);
-    console.log(e.value);
+    dispatch(changeLanguage(e.value));
+    return e.value
   }
 
   // useEffect(() => {

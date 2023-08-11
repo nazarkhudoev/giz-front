@@ -44,11 +44,7 @@ export default function Map() {
   };
 
   return (
-
-  
-    
     <MapContainer
-
       ref={mapRef}
       id="map-gbao"
       className = "h-full w-[800px] max-w-full rounded-[30px] relative"
@@ -59,11 +55,7 @@ export default function Map() {
       maxBounds = {bounds}
       minZoom = {8}
     >
-
-
-      <ZoomControl position="bottomright" />
-        
-      
+      <ZoomControl position="bottomright" /> 
       {orthphoto?<TileLayer
         url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF6YXJraHVkb2V2IiwiYSI6ImNsampzeGx2NTBjYmMzbXFxaDBzeXEzcW8ifQ.TIi2ZR3-Vjj8mGghyIGchA"
         id='mapbox/satellite-streets-v12'

@@ -1,6 +1,8 @@
 import Map from "../Map/index";
 import Projects from "../Projects/Projects";
 
+import "./MainContent.css"
+
 export default function MainContent() {
   return (
     <div

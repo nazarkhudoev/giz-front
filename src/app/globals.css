@@ -21,6 +21,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.hide__scroll {
+  overflow: hidden;
+}
+
 .switch-btn button {
   padding: 0 !important;
   display: flex !important;
@@ -151,7 +155,6 @@ html {
 
 /* About Section */
 .geography {
-  
 }
 
 .geography p {
@@ -216,10 +219,11 @@ html {
 .card__info {
   position: absolute;
   width: 70%;
-  right: 10px;
+  left: 24%;
   top: 50%;
   transform: translateY(-50%);
   transition: all 0.8s;
+  margin-left: 15px;
   /* transition-delay: 0.1s; */
 }
 
@@ -262,6 +266,7 @@ html {
 .collapsed__info {
   top: 350px;
   right: 100px;
+  left: 0;
   padding: 25px 0;
 }
 
@@ -508,32 +513,30 @@ html {
   overflow: hidden;
 }
 
-.leaflet-control-zoom, .leaflet-bar{
+.leaflet-control-zoom,
+.leaflet-bar {
   display: flex;
   flex-direction: column;
-  width: 40px!important;
-  height: 80px!important;
-  border: none!important;
-  border: none!important;
-
+  width: 40px !important;
+  height: 80px !important;
+  border: none !important;
+  border: none !important;
 }
-.leaflet-control-zoom-in{
-
-  display: flex!important;
-  justify-content: center!important;
-  align-items: center!important;
-  width: 40px!important;
-  height: 40px!important;
-  border-top-left-radius: 10px!important;
-  border-top-right-radius: 10px!important;
-
+.leaflet-control-zoom-in {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
 }
-.leaflet-control-zoom-out{
-  display: flex!important;
-  justify-content: center!important;
-  align-items: center!important;
-  width: 40px!important;
-  height: 40px!important;
-  border-bottom-left-radius: 10px!important;
-  border-bottom-right-radius: 10px!important;
+.leaflet-control-zoom-out {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
 }

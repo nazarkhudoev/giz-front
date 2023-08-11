@@ -17,6 +17,8 @@ import { regionsData } from "../../../public/data/Region";
 import { selectFilter, seacrhFilter } from "@/redux/features/projectsSlice";
 import { useAppDispatch } from "@/redux/hooks";
 
+import "./Filter.css"
+
 export default function Filter() {
   const dispatch = useAppDispatch();
 
@@ -31,9 +33,9 @@ export default function Filter() {
   // properties.District Name
 
   return (
-    <nav className="flex items-center gap-16 px-28 mt-10">
+    <nav className="flex items-center flex-wrap gap-16 px-28 mt-10 projects__filter">
       <p>Filter:</p>
-      <section className="flex items-center gap-10">
+      <section className="flex items-center flex-wrap gap-10">
         <div>
           <Select onValueChange={handleSelectFilter}>
             <SelectTrigger className="min-w-[120px] text-center text-black">

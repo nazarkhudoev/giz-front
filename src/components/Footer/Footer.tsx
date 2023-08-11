@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Logo from "../Logo/Logo";
+import "./Footer.css"
 
 export default function Footer() {
   return (
-    <footer className="flex items-start justify-between px-28 py-[75px] bg-[#C30F08]">
+    <footer id="footer" className="flex items-start justify-between gap-14 flex-wrap px-28 py-[75px] bg-[#C30F08]">
       <div>
         <Logo />
         <p className="text-white block mt-4">

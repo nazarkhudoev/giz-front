@@ -1,4 +1,4 @@
-export const districts = {
+export const districts:any = {
     "type": "FeatureCollection",
     "features": [
         {

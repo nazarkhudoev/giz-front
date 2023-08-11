@@ -13,11 +13,11 @@ export default function Logo() {
     <>
       {path == "/" ? (
         <a href="#header">
-          <Image src={LogoImage} alt="Logo" width={200} height={200} />
+          <Image className="logo" src={LogoImage} alt="Logo" width={200} height={200} />
         </a>
       ) : (
         <Link href={path == "/" ? "#header" : "/"}>
-          <Image src={LogoImage} alt="Logo" width={200} height={200} />
+          <Image className="logo" src={LogoImage} alt="Logo" width={200} height={200} />
         </Link>
       )}
     </>
