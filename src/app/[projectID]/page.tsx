@@ -57,7 +57,7 @@ export default function SingleProject({
           {project?.name_en}
         </h2>
         <p>{project?.short_en}</p>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between slider-container__custom">
           <div className="container">
             <Swiper
               effect={"coverflow"}
@@ -92,6 +92,7 @@ export default function SingleProject({
                       alt="Gallery Item"
                       width={200}
                       height={200}
+                      className="image-carousel-custom"
                     // className="object-cover aspect-square"
                     />
                   </SwiperSlide>

@@ -458,6 +458,17 @@ html {
   user-select: none;
 }
 
+@media (max-width: 1069px) {
+  .slider-container__custom {
+    display: none;
+  }
+  
+  .swiper-slide .image-carousel-custom {
+    width: 280px !important;
+    height: 200px !important;
+  }
+}
+
 /* Admin Page */
 .admin-container {
   display: grid;
