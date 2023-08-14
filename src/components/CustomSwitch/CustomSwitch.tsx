@@ -41,7 +41,6 @@ export default function CustomSwitch() {
     control: (base: any, state: any) => ({
       ...base,
       background: "transparent",
-      width: "6.1 rem",
       border: state.isFocused ? 0 : 0,
       // This line disable the blue border
       boxShadow: state.isFocused ? 0 : 0,
