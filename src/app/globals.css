@@ -82,23 +82,23 @@ html {
 }
 
 .slider__main-1 {
-  /* background-image: url(../../out/images/image\ 1.png);
+  background-image: url(../../out/images/image\ 1.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center; */
+  background-position: center center;
   
 }
 .slider__main-2 {
-  /* background-image: url(../../out/images/image\ 2.png);
+  background-image: url(../../out/images/image\ 2.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center; */
+  background-position: center center;
 }
 .slider__main-3 {
-  /* background-image: url(../../out/images/image\ 3.png);
+  background-image: url(../../out/images/image\ 3.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center; */
+  background-position: center center;
 }
 
 .carousel-caption {
