@@ -5,7 +5,7 @@ import "./MainSlider.css"
 
 export default function MainSlider() {
   return (
-    <div className="px-28 pt-5 main-slider">
+    <div className="h-[500px] px-28 pt-5 main-slider">
       <Carousel>
         <Carousel.Item>
           <div className='slider__main-1 w-full h-[500px] bg-red-500'></div>

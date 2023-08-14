@@ -2,7 +2,9 @@
 
 import { useAppSelector } from "@/redux/hooks";
 // import { data } from "@/app/data/projects";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from 'next/image';
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
@@ -13,13 +15,38 @@ import { fetchProject } from "@/redux/features/projectsSlice";
 
 import "./Projects.css"
 
-export default function Projects() {
-  const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.ProjectsReducer);
+import uca_card from "../../../public/images/media/uca/UCA_Photo_1.png"
+import dairy from "../../../public/images/media/dairy/Khuf_1_Photo_1.png"
+import entrepreneurship_center from "../../../public/images/media/uca/UCA_Photo_1.png"
+// import foodSafety from "../../../public/images/media/uca/UCA_Photo_1.png"
+import gosstand from "../../../public/images/media/gosstand/Gos_st_Photo_1.png"
 
-  useEffect(() => {
-    dispatch(fetchProject());
-  }, []);
+
+import vegetable from "../../../public/images/media/vegetable/Derzud_Photo_2.png"
+import TVETCentre from "../../../public/images/media/tvetcentre/tvet_uca_Photo_1.png"
+import cooperative from "../../../public/images/media/cooperativezindagi/Coop - zind_Photo_1.png"
+
+type Images = {
+  uca: any;
+  dairy: any;
+  entrepreneurship_center: any;
+  foodSafety: any;
+  vegetable: any;
+  TVETCentre: any;
+  cooperative : any;
+
+};
+
+export default function Projects() {
+
+  const cardImages:any = {uca: uca_card, dairy: dairy, entrepreneurship_center, gosstand, vegetable, TVETCentre, cooperative};
+
+  const dispatch = useAppDispatch();
+  const state:any = useAppSelector((state) => state.ProjectsReducer);
+
+  // useEffect(() => {
+  //   dispatch(fetchProject());
+  // }, []);
 
   const [projects, setProjects] = useState<Projectinterface[]>(
     state.filteredData
@@ -71,15 +98,14 @@ export default function Projects() {
                       : "card__image"
                     }`}
                 >
-                  <img
+                  
+                  <Image
                     className={`${active == index
                         ? "default__image collapsed__image"
                         : "default__image"
                       }`}
-                    src={project.banner_url}
+                    src={cardImages[project.banner_url]}
                     alt="Project Image"
-                  // width={200}
-                  // height={200}
                   />
                 </div>
                 <div
