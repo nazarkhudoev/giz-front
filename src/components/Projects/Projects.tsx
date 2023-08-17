@@ -12,19 +12,21 @@ import { useAppDispatch } from "@/redux/hooks";
 import { API_KEY } from "@/app/configs/API_KEY";
 import { Projectinterface } from "@/app/interfaces/ProjectInterface";
 import { fetchProject } from "@/redux/features/projectsSlice";
-
+import {viewProject} from "@/redux/features/projectsSlice";
 import "./Projects.css"
 
-import uca_card from "../../../public/images/media/uca/UCA_Photo_1.png"
-import dairy from "../../../public/images/media/dairy/Khuf_1_Photo_1.png"
-import entrepreneurship_center from "../../../public/images/media/uca/UCA_Photo_1.png"
-// import foodSafety from "../../../public/images/media/uca/UCA_Photo_1.png"
-import gosstand from "../../../public/images/media/gosstand/Gos_st_Photo_1.png"
+import uca_card from "../../../public/images/media/uca/UCA_Photo_1.jpg"
+import dairy from "../../../public/images/media/dairy/Khuf_1_Photo_1.jpg"
+import entrepreneurship_center from "../../../public/images/media/uca/UCA_Photo_1.jpg"
+// import foodSafety from "../../../public/images/media/uca/UCA_Photo_1.jpg"
+import gosstand from "../../../public/images/media/gosstand/Gos_st_Photo_1.jpg"
+import { useRouter } from "next/navigation";
 
 
-import vegetable from "../../../public/images/media/vegetable/Derzud_Photo_2.png"
-import TVETCentre from "../../../public/images/media/tvetcentre/tvet_uca_Photo_1.png"
-import cooperative from "../../../public/images/media/cooperativezindagi/Coop - zind_Photo_1.png"
+import vegetable from "../../../public/images/media/vegetable/Derzud_Photo_2.jpg"
+import TVETCentre from "../../../public/images/media/tvetcentre/tvet_uca_Photo_1.jpg"
+import zindagi from "../../../public/images/media/cooperativezindagi/Coop - zind_Photo_1.jpg"
+import gosstandBazar from "../../../public/images/media/foodsafety/Food_lab_Photo_1.jpg"
 
 type Images = {
   uca: any;
@@ -38,10 +40,12 @@ type Images = {
 };
 
 export default function Projects() {
+  const router = useRouter();
 
-  const cardImages:any = {uca: uca_card, dairy: dairy, entrepreneurship_center, gosstand, vegetable, TVETCentre, cooperative};
-
+  const cardImages:any = {uca: uca_card, dairy: dairy, entrepreneurship_center, gosstand, vegetable, TVETCentre, zindagi, gosstandBazar};
   const dispatch = useAppDispatch();
+
+  // const dispatch = useAppDispatch();
   const state:any = useAppSelector((state) => state.ProjectsReducer);
 
   // useEffect(() => {
@@ -66,12 +70,13 @@ export default function Projects() {
     let activeProject = projects.find(
       (doc) => doc.project_id == project.project_id
     );
-    setActive(index);
-    console.log(activeProject);
 
     if (active == index) {
-      setActive(null);
+      // setActive(null);
+    }else{
+      setActive(index);
     }
+
   };
 
   return (
@@ -124,17 +129,20 @@ export default function Projects() {
                     {project.short_en}
                   </p>
 
-                  <div></div>
                 </div>
-                <Link
-                  href={`/${project.project_id}`}
+                <button
                   className={`${active == index
                       ? "absolute bottom-5 left-[60px] opacity-1"
                       : "absolute opacity-0"
                     }`}
+                    onClick={() => { 
+                      dispatch(viewProject(project));
+                      useRouter
+                      router.push('./project', { scroll: false })
+                    }}
                 >
                   read more
-                </Link>
+                </button>
               </div>
             );
           })}

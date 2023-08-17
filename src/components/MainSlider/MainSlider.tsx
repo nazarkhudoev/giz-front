@@ -5,10 +5,10 @@ import "./MainSlider.css"
 
 export default function MainSlider() {
   return (
-    <div className="h-[500px] px-28 pt-5 main-slider">
+    <div className="px-28 pt-5 main-slider">
       <Carousel>
         <Carousel.Item>
-          <div className='slider__main-1 w-full h-[500px] bg-red-500'></div>
+          <div className='slider__main-1 w-full h-[500px]'></div>
           <Carousel.Caption>
             <div>
               <p>Social Development</p>
@@ -18,7 +18,7 @@ export default function MainSlider() {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <div className='slider__main-2 w-full h-[500px] bg-red-500'></div>
+          <div className='slider__main-2 w-full h-[500px]'></div>
           <Carousel.Caption>
             <div>
               <p>Social Development</p>
@@ -28,7 +28,7 @@ export default function MainSlider() {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <div className='slider__main-3 w-full h-[500px] bg-red-500'></div>
+          <div className='slider__main-3 w-full h-[500px]'></div>
           <Carousel.Caption>
             <div>
               <p>Social Development</p>

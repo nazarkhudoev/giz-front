@@ -18,7 +18,7 @@ export default function Header() {
   }, []);
 
   const handleShowMenu = () => {
-    menuRef.current.classList.toggle("active");
+    menuRef.current.classList.toggle("active__menu");
     document.body.classList.toggle("hide__scroll");
   }
 

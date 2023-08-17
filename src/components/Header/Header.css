@@ -23,7 +23,7 @@
   /* overflow-x: hidden; */
 }
 
-.active {
+.active__menu {
   position: absolute;
   visibility: visible !important;
   opacity: 1 !important;

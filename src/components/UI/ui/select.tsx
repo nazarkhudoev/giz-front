@@ -72,6 +72,7 @@ const SelectLabel = React.forwardRef<
     {...props}
   />
 ))
+
 SelectLabel.displayName = SelectPrimitive.Label.displayName
 
 const SelectItem = React.forwardRef<
@@ -95,6 +96,7 @@ const SelectItem = React.forwardRef<
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ))
+
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
 const SelectSeparator = React.forwardRef<
@@ -107,6 +109,7 @@ const SelectSeparator = React.forwardRef<
     {...props}
   />
 ))
+
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
 export {

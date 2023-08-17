@@ -82,19 +82,20 @@ html {
 }
 
 .slider__main-1 {
-  background-image: url(../../public/images/image\ 2.png);
+  background-image: url(../../out/images/image\ 1.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  
 }
 .slider__main-2 {
-  background-image: url(../../public/images/image\ 1.png);
+  background-image: url(../../out/images/image\ 2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 .slider__main-3 {
-  background-image: url(../../public/images/image\ 3.png);
+  background-image: url(../../out/images/image\ 3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -123,6 +124,7 @@ html {
   display: flex !important;
   align-items: center !important;
   gap: 10px;
+  display: none !important;
 }
 
 .carousel-indicators button {
@@ -264,6 +266,8 @@ html {
 }
 
 .collapsed__info {
+  width: 90%;
+
   top: 350px;
   right: 100px;
   left: 0;
@@ -455,6 +459,21 @@ html {
   width: 200px;
   height: 200px;
   user-select: none;
+}
+
+.css-b62m3t-container {
+  width: 6.1rem;
+}
+
+@media (max-width: 1069px) {
+  .slider-container__custom {
+    display: none;
+  }
+
+  .swiper-slide .image-carousel-custom {
+    width: 280px !important;
+    height: 200px !important;
+  }
 }
 
 /* Admin Page */
