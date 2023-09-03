@@ -16,13 +16,13 @@ export default function About() {
     setlang(stateLang.language)
   }, [stateLang.language]);
 
-
   return (
     <section
       id="about"
       className="flex items-start justify-between gap-14 px-28 pt-5"
     >
       <div className="geography w-[30%]">
+
         <h3>{lang == "de" ? `Erdkunde` : lang == "en" ? `Geography` : lang == "tj" ? `Ҷуғрофия` : `География`}</h3>
         <p className="text-justify">
           {
@@ -39,6 +39,7 @@ export default function About() {
       <div className="w-[70%]">
         <div className="card-container flex items-start gap-10">
           <div className="mb-2">
+
             <h3>{lang == "de" ? `Hauptstadt` : lang == "en" ? `Capital` : lang == "tj" ? `Пойтахт` : `Столица`}</h3>
             <p className="text-justify">
               {
@@ -64,11 +65,13 @@ export default function About() {
                       : `Большинство населения Таджикистана составляют таджики. Таджики – персоязычный народ, веками живший в этом регионе. Другие этнические группы в Таджикистане включают узбеков, кыргызов и русских.`
               }
 
+
             </p>
           </div>
         </div>
         <div className="card-container flex items-start gap-10 mt-2">
           <div className="language">
+
             <h3>{lang == "de" ? `Sprache` : lang == "en" ? `Language` : lang == "tj" ? `Забон` : `Язык`}</h3>
             <p className="text-justify">
               {
@@ -93,7 +96,6 @@ export default function About() {
                     : lang == "tj" ? `Аксарияти аҳолии Тоҷикистон мусулмонанд. Ислом дини расмии кишвар аст. Дигар гурӯҳҳои динӣ дар Тоҷикистон масеҳиен, яҳудиен ва буддоиенро дар бар мегиранд.`
                       : `Большинство населения Таджикистана – мусульмане. Ислам является официальной религией страны. Другие религиозные группы в Таджикистане включают христиан, иудеев и буддистов.`
               }
-
             </p>
           </div>
         </div>

@@ -21,6 +21,7 @@ export default function CustomSwitch() {
     { value: "de", label: <div className="flex items-center gap-1"><img src={GermanFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>DE</p> </div> },
     { value: "ru", label: <div className="flex items-center gap-1"><img src={RussianFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>RU</p> </div> },
     { value: "tj", label: <div className="flex items-center gap-1"><img src={TajikFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>TJ</p> </div> },
+
     // { value: "RU", label: "RU" }
   ];
 
@@ -29,6 +30,7 @@ export default function CustomSwitch() {
   function handleSelectChange(e: any) {
     setSelectedLanguage(e.value);
     dispatch(changeLanguage(e.value));
+    localStorage.setItem("lang", e.value)
     return e.value
   }
 
@@ -59,6 +61,7 @@ export default function CustomSwitch() {
     content = <div className="flex items-center gap-1"><p className="text-sm font-light">RU</p><img src={RussianFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
   } else if (selectedLanguage == "tj") {
     content = <div className="flex items-center gap-1"><p className="text-sm font-light">TJ</p><img src={TajikFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
+
   }
 
   return (

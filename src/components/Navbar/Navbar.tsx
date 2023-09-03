@@ -14,6 +14,7 @@ export default function Navbar() {
             {state.language == "en" && "ABOUT"}
             {state.language == "tj" && "ДАР БОРАИ МО"}
             {state.language == "ru" && "О НАС"}
+
           </a>
         </li>
         <li>
