@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
@@ -73,25 +73,34 @@ export default function SingleProject() {
     ]
 
     const state: any = useAppSelector((state) => state.ProjectsReducer);
+    const stateLang:any = useAppSelector((state) => state.LanguageReducer);
 
     const [project, setProject] = useState(state.viewProject);
 
     const [id, setId] = useState(state.viewProject.project_id);
 
-
+  
+    const [lang, setlang] = useState<String>(
+        stateLang.language
+      );
+    
+      useEffect(() => {
+        setlang(stateLang.language)
+      }, [stateLang.language]);
+    
 
 
     return (
         <div>
-            <section className="project-container  px-5 py-12 flex flex-col gap-5 lg:px-28  sm:px-5  ">
+            <section className="project-container  px-2 py-12 flex flex-col gap-5 lg:px-28  xl:px-28999999999999999 sm:px-5  ">
                 <div>
                     <Image width={100} height={50} className="w-[100%]" src={media_mock[id - 1][0]} alt="Project Placeholder image" />
                 </div>
 
                 <h2 className="text-center uppercase font-semibold mb-3 text-lg text-[#C30F08]">
-                    {project.name_en}
+                    {lang=="en"?project.name_en:lang=="ru"?project.name_ru:lang=="tj"?project.name_tj:project.name_de}
                 </h2>
-                <p>{project.short_en}</p>
+                <p>{lang=="en"?project.short_en:lang=="ru"?project.short_ru:lang=="tj"?project.short_tj:project.short_de}</p>
                 <div className="flex items-center justify-between">
                     <div className="container">
                         <Swiper
@@ -136,14 +145,14 @@ export default function SingleProject() {
 
                             }
                             <div className="swiper-pagination flex justify-center items-center gap-2"></div>
-                            <div className="slider-controler">
+                            {/* <div className="slider-controler">
                                 <div className="swiper-button-prev slider-arrow arr-container">
                                     <AiOutlineArrowLeft className="arrows" />
                                 </div>
                                 <div className="swiper-button-next slider-arrow">
                                     <AiOutlineArrowRight className="arrows" />
                                 </div>
-                            </div>
+                            </div> */}
                         </Swiper>
 
                     </div>

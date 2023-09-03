@@ -42,7 +42,7 @@ export default function Filter() {
     } else {
       setSelectedFilter(state.selectedDistrict);
     }
-  }, [state.filteredData,  state.selectedDistrict]);
+  }, [state.filteredData, state.selectedDistrict]);
 
 
   // properties.District Name
@@ -73,10 +73,10 @@ export default function Filter() {
                     <SelectItem
                     
                       key={district.id}
-                      value={district.properties["District Name"]}
+                      value={district.properties.district_name}
                     >
                       <div className="text-black">
-                        <p>{district.properties["District Name"]}</p>
+                        <p>{district.properties.district_name}</p>
                       </div>
                     </SelectItem>
                   );

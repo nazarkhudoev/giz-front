@@ -2,8 +2,18 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 import "./MainSlider.css"
+import { useAppSelector } from '@/redux/hooks';
+import { useEffect, useState } from 'react';
 
 export default function MainSlider() {
+  const stateLang:any = useAppSelector((state) => state.LanguageReducer);
+  const [lang, setlang] = useState<String>(
+    stateLang.language
+  );
+  useEffect(() => {
+    setlang(stateLang.language)
+  }, [stateLang.language]);
+
   return (
     <div className="px-28 pt-5 main-slider">
       <Carousel>
@@ -12,8 +22,8 @@ export default function MainSlider() {
           <Carousel.Caption>
             <div>
               <p>Social Development</p>
-              <h3 className='font-bold'>Women promote peace</h3>
-              <p className='text-sm'>An information network is supporting women activists to boost their participation in peace processes.</p>
+              <h3 className='font-bold'>Fostering Entrepreneurship</h3>
+              <p className='text-sm'>Empowering Small Businesses and Farmers through Khorog Centre for Entrepreneurship (KCE).</p>
             </div>
           </Carousel.Caption>
         </Carousel.Item>
@@ -22,8 +32,8 @@ export default function MainSlider() {
           <Carousel.Caption>
             <div>
               <p>Social Development</p>
-              <h3 className='font-bold'>Women promote peace</h3>
-              <p className='text-sm'>An information network is supporting women activists to boost their participation in peace processes.</p>
+              <h3 className='font-bold'>Empowering Agriculture</h3>
+              <p className='text-sm'>Showcasing Success with the Demo-Greenhouse in Derzud, Rushan District</p>
             </div>
           </Carousel.Caption>
         </Carousel.Item>
@@ -32,8 +42,8 @@ export default function MainSlider() {
           <Carousel.Caption>
             <div>
               <p>Social Development</p>
-              <h3 className='font-bold'>Women promote peace</h3>
-              <p className='text-sm'>An information network is supporting women activists to boost their participation in peace processes.</p>
+              <h3 className='font-bold'>Driving Success</h3>
+              <p className='text-sm'>Launching a Cutting-Edge Heavy-Truck Maintenance Workshop at SPCE TVET Centre.</p>
             </div>
           </Carousel.Caption>
         </Carousel.Item>

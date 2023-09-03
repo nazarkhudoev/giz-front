@@ -13,6 +13,8 @@ import { API_KEY } from "@/app/configs/API_KEY";
 import { Projectinterface } from "@/app/interfaces/ProjectInterface";
 import { fetchProject } from "@/redux/features/projectsSlice";
 import {viewProject} from "@/redux/features/projectsSlice";
+import {projectCardExpanded} from "@/redux/features/projectsSlice";
+
 import "./Projects.css"
 
 import uca_card from "../../../public/images/media/uca/UCA_Photo_1.jpg"
@@ -36,10 +38,10 @@ type Images = {
   vegetable: any;
   TVETCentre: any;
   cooperative : any;
-
 };
 
 export default function Projects() {
+
   const router = useRouter();
 
   const cardImages:any = {uca: uca_card, dairy: dairy, entrepreneurship_center, gosstand, vegetable, TVETCentre, zindagi, gosstandBazar};
@@ -47,6 +49,7 @@ export default function Projects() {
 
   // const dispatch = useAppDispatch();
   const state:any = useAppSelector((state) => state.ProjectsReducer);
+  const stateLang:any = useAppSelector((state) => state.LanguageReducer);
 
   // useEffect(() => {
   //   dispatch(fetchProject());
@@ -56,12 +59,22 @@ export default function Projects() {
     state.filteredData
   );
 
+  
+  const [lang, setlang] = useState<String>(
+    stateLang.language
+  );
+
   useEffect(() => {
-    if (state.filteredData.length < 1) {
-      setProjects(state.projects);
-    } else {
+    setlang(stateLang.language)
+  }, [stateLang.language]);
+
+
+  useEffect(() => {
+    // if (state.filteredData.length < 1) {
       setProjects(state.filteredData);
-    }
+    // } else {
+    //   setProjects(state.filteredData);
+    // }
   }, [projects, state.projects, state.filteredData]);
 
   const [active, setActive] = useState<number | null>(null);
@@ -75,14 +88,15 @@ export default function Projects() {
       // setActive(null);
     }else{
       setActive(index);
+      dispatch(projectCardExpanded(activeProject?.project_id))
     }
 
   };
 
   return (
     <div className="bg-[#F0F0F0] rounded-[30px] w-[550px] h-full overflow-y-scroll relative px-3 projects__container">
-      <h3 className="text-center py-3 sticky top-0 z-50 bg-[#F0F0F0]">
-        Projects
+      <h3 className="project-title text-center py-3 sticky top-0 z-50 bg-[#F0F0F0]">
+        {lang=="en"? `PROJECTS`:lang=="ru"?`ПРОЕКТЫ`:lang=="tj"?`ЛОИҲАҲО`:`PROJEKTE`}
       </h3>
       <section className="flex flex-col items-start justify-start gap-3 pb-5">
         {state.loading && <div>loading</div>}
@@ -119,14 +133,14 @@ export default function Projects() {
                       : "card__info"
                     }`}
                 >
-                  <h6 className="text-[15px] font-bold">{project.name_en}</h6>
+                  <h6 className="text-[15px] font-bold">{lang=="en"?project.name_en:lang=="ru"?project.name_ru:lang=="tj"?project.name_tj:project.name_de}</h6>
                   <p
                     className={`${active == index
                         ? "default__text collapsed__text"
                         : "default__text"
                       }`}
                   >
-                    {project.short_en}
+                    {lang=="en"?project.short_en:lang=="ru"?project.short_ru:lang=="tj"?project.short_tj:project.short_de}
                   </p>
 
                 </div>
@@ -137,7 +151,6 @@ export default function Projects() {
                     }`}
                     onClick={() => { 
                       dispatch(viewProject(project));
-                      useRouter
                       router.push('./project', { scroll: false })
                     }}
                 >

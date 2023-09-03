@@ -2,10 +2,10 @@
 import { useState, useId, useEffect } from "react"
 import Select from "react-select";
 
-import Flag1 from "../../../public/icons/de.svg"
-import Flag2 from "../../../public/icons/en.svg"
-import Flag3 from "../../../public/icons/en.svg"
-import Flag4 from "../../../public/icons/ru.svg"
+import TajikFlag from "../../../public/icons/tj.svg";
+import RussianFlag from "../../../public/icons/ru.svg";
+import EnglishFlag from "../../../public/icons/en.svg";
+import GermanFlag from "../../../public/icons/de.svg";
 
 import { changeLanguage } from "@/redux/features/languageSlice"
 import { useAppDispatch } from "@/redux/hooks";
@@ -17,12 +17,12 @@ export default function CustomSwitch() {
   const [placeholder, setPlaceholder] = useState<any>(selectedLanguage);
 
   const options = [
-    { value: "de", label: <div className="flex items-center gap-1"><img src={Flag1.src} className="rounded-[15px]" height="20px" width="20px" /><p>DE</p> </div> },
-    { value: "en", label: <div className="flex items-center gap-1"><img src={Flag2.src} className="rounded-[15px]" height="20px" width="20px" /><p>EN</p> </div> },
-    { value: "ru", label: <div className="flex items-center gap-1"><img src={Flag4.src} className="rounded-[15px]" height="20px" width="20px" /><p>RU</p> </div> },
-    { value: "tj", label: <div className="flex items-center gap-1"><img src={Flag3.src} className="rounded-[15px]" height="20px" width="20px" /><p>TJ</p> </div> },
+    { value: "en", label: <div className="flex items-center gap-1"><img src={EnglishFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>EN</p> </div> },
+    { value: "de", label: <div className="flex items-center gap-1"><img src={GermanFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>DE</p> </div> },
+    { value: "ru", label: <div className="flex items-center gap-1"><img src={RussianFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>RU</p> </div> },
+    { value: "tj", label: <div className="flex items-center gap-1"><img src={TajikFlag.src} className="rounded-[15px]" height="20px" width="20px" /><p>TJ</p> </div> },
     // { value: "RU", label: "RU" }
-  ]
+  ];
 
   // <div><img src={copyIcon} height="30px" width="30px"/>Chocolate </div>
 
@@ -52,13 +52,13 @@ export default function CustomSwitch() {
   let content: any = ""
 
   if (selectedLanguage == "de") {
-    content = <div className="flex items-center gap-1"> <p className="text-sm font-light">DE</p><img src={Flag1.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
+    content = <div className="flex items-center gap-1"> <p className="text-sm font-light">DE</p><img src={GermanFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
   } else if (selectedLanguage == "en") {
-    content = <div className="flex items-center gap-1"><p className="text-sm font-light">EN</p><img src={Flag2.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
+    content = <div className="flex items-center gap-1"><p className="text-sm font-light">EN</p><img src={EnglishFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
   } else if (selectedLanguage == "ru") {
-    content = <div className="flex items-center gap-1"><p className="text-sm font-light">RU</p><img src={Flag4.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
+    content = <div className="flex items-center gap-1"><p className="text-sm font-light">RU</p><img src={RussianFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
   } else if (selectedLanguage == "tj") {
-    content = <div className="flex items-center gap-1"><p className="text-sm font-light">TJ</p><img src={Flag3.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
+    content = <div className="flex items-center gap-1"><p className="text-sm font-light">TJ</p><img src={TajikFlag.src} className="rounded-[15px]" height="20px" width="20px" /> </div>
   }
 
   return (

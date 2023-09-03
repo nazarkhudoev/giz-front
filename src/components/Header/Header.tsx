@@ -33,7 +33,7 @@ export default function Header() {
         <div className="menu__line"></div>
         <div className="menu__line"></div>
       </div>
-      <div ref={menuRef} className="flex items-center gap-[90px] header__info">
+      <div ref={menuRef} className="flex items-center gap-[90px] headessr__info">
         <Navbar />
         <CustomSwitch />
       </div>

@@ -12,7 +12,8 @@ import {
   SelectValue,
 } from "@/components/UI/ui/select";
 
-import TajikFlag from "../../../public/icons/ru.svg";
+import TajikFlag from "../../../public/icons/tj.svg";
+import RussianFlag from "../../../public/icons/ru.svg";
 import EnglishFlag from "../../../public/icons/en.svg";
 import GermanFlag from "../../../public/icons/de.svg";
 
@@ -48,6 +49,12 @@ export default function LanguageSwitch() {
         <SelectContent className="bg-white">
           <SelectGroup className="text-black">
             <SelectItem value="RU">
+              <div className="flex items-center text-black gap-2">
+                <p className="w-16 switch-txt">RU</p>
+                <Image src={RussianFlag} alt="Logo" />
+              </div>
+            </SelectItem>
+            <SelectItem value="TJ">
               <div className="flex items-center text-black gap-2">
                 <p className="w-16 switch-txt">TJ</p>
                 <Image src={TajikFlag} alt="Logo" />
