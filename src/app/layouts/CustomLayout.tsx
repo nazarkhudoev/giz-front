@@ -3,7 +3,7 @@
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-import "../i18next"
+// import "../i18next"
 
 export default function CustomLayout({
   children,

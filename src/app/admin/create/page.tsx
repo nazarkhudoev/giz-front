@@ -320,10 +320,10 @@ export default function CreateProject() {
                     return (
                       <SelectItem
                         key={district.id}
-                        value={district.properties["District Name"]}
+                        value={district.properties.district_name}
                       >
                         <div className="text-black">
-                          <p>{district.properties["District Name"]}</p>
+                          <p>{district.properties.district_name}</p>
                         </div>
                       </SelectItem>
                     );
@@ -385,10 +385,10 @@ export default function CreateProject() {
                     return (
                       <SelectItem
                         key={district.id}
-                        value={district.properties["District Name"]}
+                        value={district.properties.district_name}
                       >
                         <div className="text-black">
-                          <p>{district.properties["District Name"]}</p>
+                          <p>{district.properties.district_name}</p>
                         </div>
                       </SelectItem>
                     );

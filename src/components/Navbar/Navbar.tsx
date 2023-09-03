@@ -4,31 +4,33 @@ import { useAppSelector } from "@/redux/hooks";
 
 export default function Navbar() {
   const state = useAppSelector((state) => state.LanguageReducer);
+  
   return (
     <nav>
       <ul className="flex items-center gap-[50px]">
         <li>
           <a className="text-white" href="#about">
-            {state.language == "de" && "Über uns"}
-            {state.language == "en" && "About"}
-            {state.language == "tj" && "Дар бораи мо"}
-            {state.language == "ru" && "О нас"}
+            {state.language == "de" && "UM"}
+            {state.language == "en" && "ABOUT"}
+            {state.language == "tj" && "ДАР БОРАИ МО"}
+            {state.language == "ru" && "О НАС"}
+
           </a>
         </li>
         <li>
           <a className="text-white" href="#projects">
-            {state.language == "de" && "Projekte"}
-            {state.language == "en" && "Projects"}
-            {state.language == "tj" && "Лоиҳаҳо"}
-            {state.language == "ru" && "Проекты"}
+            {state.language == "de" && "PROJEKTE"}
+            {state.language == "en" && "PROJECTS"}
+            {state.language == "tj" && "ЛОИХАХО"}
+            {state.language == "ru" && "ПРОЕКТЫ"}
           </a>
         </li>
         <li>
-          <a className="text-white" href="#projects">
-            {state.language == "de" && "Kontakt"}
-            {state.language == "en" && "Contacts"}
-            {state.language == "tj" && "Тамос"}
-            {state.language == "ru" && "Контакты"}
+          <a className="text-white" href="#footer">
+            {state.language == "de" && "KONTAKTE"}
+            {state.language == "en" && "CONTACTS"}
+            {state.language == "tj" && "ТАМОС"}
+            {state.language == "ru" && "КОНТАКТЫ"}
           </a>
         </li>
       </ul>
